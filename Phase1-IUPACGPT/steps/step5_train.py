@@ -1,0 +1,390 @@
+#!/usr/bin/env python3
+"""
+STEP 5 -- Train ToxGuard (LoRA Fine-tuning)
+============================================
+Reads  :  data/toxcast_final.csv             <- ToxCast (binary from 617 assays)
+          data/tox21_final.csv              <- Tox21 (binary from 12 assays)
+          data/herg_final.csv               <- hERG (cardiotoxicity — hERG blocker)
+          data/dili_final.csv               <- DILI (drug-induced liver injury)
+          data/common_molecules_final.csv   <- curated ~1100 short-IUPAC molecules
+          iupacGPT/iupac-gpt/checkpoints/iupac/  <- IUPACGPT backbone
+          Phase1-IUPACGPT/iupacGPT_outputs/lora_config.json    <- LoRA config from step 4
+
+NOTE: T3DB and ClinTox are intentionally excluded from training.
+      T3DB is 99.2% toxic and would severely bias the model toward over-predicting
+      toxicity. ClinTox is 3.4% toxic and would harm recall.
+      Both are used as external validation sets via step6_evaluate.py.
+
+Outputs:  Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/lora_weights.pt    <- trained LoRA adapter weights
+          Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/checkpoints/       <- Lightning checkpoints
+          Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/tensorboard/       <- TensorBoard training logs
+          Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/config.json        <- full training config
+          Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/results.json       <- test metrics
+          Phase1-IUPACGPT/iupacGPT_outputs/last_run.txt                  <- pointer to latest run
+
+Architecture:
+  IUPAC Name -> GPT-2 + LoRA -> Binary Head (toxic/non-toxic)
+  P(toxic) = sigmoid(binary_logit), severity derived from fixed thresholds.
+
+Run from project root:
+  python steps/step5_train.py
+  python steps/step5_train.py --max_epochs 30 --batch_size 16
+  python steps/step5_train.py --learning_rate 5e-5 --lora_rank 16
+
+Key defaults (current):
+  lr=5e-5, warmup=1200, focal_gamma=1.5, grad_accumulation=2,
+  es_patience=20, auto_class_weight=False (focal_alpha handles imbalance)
+"""
+
+import os
+import sys
+import json
+import argparse
+import logging
+from datetime import datetime
+
+import torch
+import pytorch_lightning as pl
+from pytorch_lightning import Trainer, seed_everything
+from pytorch_lightning.callbacks import (
+    EarlyStopping,
+    ModelCheckpoint,
+    LearningRateMonitor,
+)
+from pytorch_lightning.loggers import TensorBoardLogger
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from iupacGPT_finetune.model import ToxGuardModel, ToxGuardLitModel
+from iupacGPT_finetune.tokenizer import get_tokenizer
+from iupacGPT_finetune.lora import apply_lora_to_model, LoRAConfig, save_lora_weights
+from iupacGPT_finetune.data_pipeline import prepare_combined_dataset
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logger = logging.getLogger(__name__)
+
+# ── Default paths ──────────────────────────────────────────────────
+CHECKPOINT_DIR = os.path.join("iupacGPT", "iupac-gpt", "checkpoints", "iupac")
+SPM_PATH       = os.path.join("iupacGPT", "iupac-gpt", "iupac_gpt", "iupac_spm.model")
+DATA_DIR       = "./data"
+OUTPUT_DIR     = os.path.join("Phase1-IUPACGPT", "iupacGPT_outputs")
+
+
+def main(args: argparse.Namespace):
+    """Main training pipeline."""
+
+    print("\n" + "=" * 60)
+    print("  STEP 5 - Train ToxGuard (LoRA Fine-tuning)")
+    print("=" * 60)
+
+    # ── Seed for reproducibility ──
+    seed_everything(args.seed, workers=True)
+
+    # Enable Tensor Core utilization on RTX GPUs
+    torch.set_float32_matmul_precision("medium")
+
+    # ── Create run directory ──
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_name = f"run_{timestamp}"
+    run_dir = os.path.join(args.output_dir, run_name)
+    os.makedirs(run_dir, exist_ok=True)
+
+    # Save pointer for step6/step7
+    with open(os.path.join(args.output_dir, "last_run.txt"), "w") as f:
+        f.write(run_dir)
+
+    # Save config
+    config_dict = vars(args)
+    config_dict["run_dir"] = run_dir
+    config_dict["run_name"] = run_name
+    with open(os.path.join(run_dir, "config.json"), "w") as f:
+        json.dump(config_dict, f, indent=2)
+    logger.info(f"Run directory: {run_dir}")
+
+    # ── Tokenizer ──
+    logger.info("Loading tokenizer...")
+    tokenizer = get_tokenizer(vocab_path=args.tokenizer)
+    logger.info(f"Tokenizer vocab size: {tokenizer.vocab_size}")
+
+    # ── Data ──
+    logger.info("Preparing datasets...")
+    train_loader, val_loader, test_loader, class_info = prepare_combined_dataset(
+        data_dir=args.data_dir,
+        tokenizer=tokenizer,
+        max_length=args.max_length,
+        val_split=args.val_split,
+        test_split=args.test_split,
+        batch_size=args.batch_size,
+        num_workers=args.num_workers,
+        split_method=args.split_method,
+    )
+    logger.info(f"Train batches: {len(train_loader)}, "
+                f"Val: {len(val_loader)}, Test: {len(test_loader)}")
+
+    # ── Model ──
+    logger.info("Loading IUPACGPT backbone...")
+    model = ToxGuardModel.from_pretrained_iupacgpt(
+        args.checkpoint
+    )
+    model.config.pad_token_id = tokenizer.pad_token_id
+
+    # Set loss weight
+    model.binary_loss_weight = args.binary_loss_weight
+
+    # Class imbalance compensation
+    if args.auto_class_weight:
+        model.set_class_weights(class_info["n_positive"], class_info["n_negative"])
+    if args.use_focal_loss:
+        model.use_focal_loss = True
+        model.focal_gamma = args.focal_gamma
+        model.focal_alpha = args.focal_alpha
+        logger.info(f"Using focal loss (gamma={args.focal_gamma}, alpha={args.focal_alpha})")
+
+    # ── LoRA ──
+    # CLI args ALWAYS win. lora_config.json from step4 is only informational.
+    # This prevents the stale global config from silently overriding what was requested.
+    lora_config = LoRAConfig(
+        r=args.lora_rank,
+        alpha=args.lora_alpha,
+        dropout=args.lora_dropout,
+        target_modules=args.lora_targets.split(","),
+        fan_in_fan_out=True,
+    )
+    logger.info(f"LoRA config: rank={lora_config.r}, alpha={lora_config.alpha}, "
+                f"dropout={lora_config.dropout}, targets={lora_config.target_modules}")
+
+    logger.info(f"Applying LoRA (rank={lora_config.r}, alpha={lora_config.alpha}, "
+                f"dropout={lora_config.dropout})...")
+    model, lora_stats = apply_lora_to_model(model, lora_config)
+
+    logger.info(f"Parameter summary:")
+    logger.info(f"  Total:      {lora_stats['total_params']:>10,}")
+    logger.info(f"  Trainable:  {lora_stats['trainable_params']:>10,} "
+                f"({lora_stats['trainable_pct']:.2f}%)")
+    logger.info(f"  LoRA:       {lora_stats['lora_params']:>10,}")
+    logger.info(f"  Frozen:     {lora_stats['frozen_params']:>10,}")
+
+    # ── Lightning Module ──
+    max_steps = len(train_loader) * args.max_epochs
+    lit_model = ToxGuardLitModel(
+        model=model,
+        learning_rate=args.learning_rate,
+        weight_decay=args.weight_decay,
+        warmup_steps=args.warmup_steps,
+        max_steps=max_steps,
+        scheduler_type=args.scheduler,
+    )
+
+    # ── Callbacks ──
+    callbacks = [
+        EarlyStopping(
+            monitor="val_auroc",
+            min_delta=args.es_min_delta,
+            patience=args.es_patience,
+            mode="max",
+            verbose=True,
+        ),
+        ModelCheckpoint(
+            dirpath=os.path.join(run_dir, "checkpoints"),
+            filename="toxguard-{epoch:02d}-{val_auroc:.3f}",
+            monitor="val_auroc",
+            mode="max",
+            save_top_k=3,
+            save_last=True,
+        ),
+        LearningRateMonitor(logging_interval="step"),
+    ]
+
+    # Optional progress bar
+    try:
+        from pytorch_lightning.callbacks import RichProgressBar
+        callbacks.append(RichProgressBar())
+    except Exception:
+        pass
+
+    # ── Logger ──
+    tb_logger = TensorBoardLogger(save_dir=run_dir, name="tensorboard")
+
+    # ── Trainer ──
+    trainer = Trainer(
+        max_epochs=args.max_epochs,
+        accelerator="auto",
+        devices=args.devices,
+        callbacks=callbacks,
+        logger=tb_logger,
+        gradient_clip_val=args.grad_clip,
+        accumulate_grad_batches=args.grad_accumulation,
+        precision=args.precision,
+        log_every_n_steps=10,
+        val_check_interval=args.val_check_interval,
+        deterministic=False,
+    )
+
+    # ── Train ──
+    logger.info("=" * 60)
+    logger.info("  Starting training...")
+    logger.info(f"  Epochs:        {args.max_epochs}")
+    logger.info(f"  Batch:         {args.batch_size} (effective {args.batch_size * args.grad_accumulation} with grad_accum={args.grad_accumulation})")
+    logger.info(f"  LR:            {args.learning_rate}")
+    logger.info(f"  Warmup steps:  {args.warmup_steps}")
+    logger.info(f"  Focal gamma:   {args.focal_gamma}  alpha: {args.focal_alpha}")
+    logger.info(f"  auto_cls_wt:   {args.auto_class_weight}")
+    logger.info(f"  ES patience:   {args.es_patience}")
+    logger.info(f"  Task:          Binary classification (toxic / non-toxic)")
+    logger.info("=" * 60)
+
+    trainer.fit(lit_model, train_loader, val_loader)
+
+    # ── Test ──
+    logger.info("Running test evaluation...")
+    test_results = trainer.test(model=lit_model, dataloaders=test_loader)
+
+    # ── Save LoRA weights ──
+    lora_save_path = os.path.join(run_dir, "lora_weights.pt")
+    save_lora_weights(model, lora_save_path)
+    logger.info(f"LoRA weights saved to: {lora_save_path}")
+
+    # Update global lora_config.json to reflect the rank actually used in this run
+    global_lora_cfg = {
+        "r": lora_config.r,
+        "alpha": lora_config.alpha,
+        "dropout": lora_config.dropout,
+        "target_modules": lora_config.target_modules,
+        "fan_in_fan_out": True,
+        "total_params": lora_stats["total_params"],
+        "trainable_params": lora_stats["trainable_params"],
+        "lora_params": lora_stats["lora_params"],
+        "trainable_pct": round(lora_stats["trainable_pct"], 4),
+    }
+    with open(os.path.join(args.output_dir, "lora_config.json"), "w") as f:
+        json.dump(global_lora_cfg, f, indent=2)
+    logger.info(f"Updated Phase1-IUPACGPT/iupacGPT_outputs/lora_config.json (r={lora_config.r})")
+
+    # ── Save results ──
+    results = {
+        "test_results": test_results,
+        "lora_stats": lora_stats,
+        "config": config_dict,
+    }
+    with open(os.path.join(run_dir, "results.json"), "w") as f:
+        json.dump(results, f, indent=2, default=str)
+
+    # ── Print summary ──
+    test_auroc = test_results[0].get("test_auroc", "N/A") if test_results else "N/A"
+    test_auprc = test_results[0].get("test_auprc", "N/A") if test_results else "N/A"
+    test_acc = test_results[0].get("test_acc", "N/A") if test_results else "N/A"
+
+    print("\n" + "=" * 60)
+    print("  TRAINING COMPLETE")
+    print("=" * 60)
+    print(f"    Run directory   : {run_dir}")
+    print(f"    LoRA weights    : {lora_save_path}")
+    print(f"    Test AUC-ROC    : {test_auroc}")
+    print(f"    Test AUC-PRC    : {test_auprc}")
+    print(f"    Test Binary Acc : {test_acc}")
+    print(f"\n  Next -> run:  python steps/step6_evaluate.py")
+    print("=" * 60 + "\n")
+
+    return test_results
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="STEP 5: Train ToxGuard — LoRA fine-tune IUPACGPT for toxicity",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+
+    # Paths
+    parser.add_argument("--checkpoint", default=CHECKPOINT_DIR,
+                        help="Path to IUPACGPT checkpoint directory")
+    parser.add_argument("--tokenizer", default=SPM_PATH,
+                        help="Path to iupac_spm.model")
+    parser.add_argument("--data_dir", default=DATA_DIR,
+                        help="Directory containing processed data CSVs")
+    parser.add_argument("--output_dir", default=OUTPUT_DIR,
+                        help="Output directory for run artifacts")
+
+    # Data
+    parser.add_argument("--max_length", type=int, default=300,
+                        help="Maximum token sequence length (dataset max is 287 tokens)")
+    parser.add_argument("--val_split", type=float, default=0.1,
+                        help="Fraction of data for validation")
+    parser.add_argument("--test_split", type=float, default=0.1,
+                        help="Fraction of data for test")
+    parser.add_argument("--split_method", type=str, choices=["random", "scaffold"], default="scaffold",
+                        help="Train/val/test splitting strategy. 'scaffold' prevents data leakage.")
+
+    # LoRA
+    parser.add_argument("--lora_rank", type=int, default=32,
+                        help="LoRA rank (r). Rank 32 gives ~14% trainable params for this 7M-param model.")
+    parser.add_argument("--lora_alpha", type=float, default=64.0,
+                        help="LoRA scaling alpha (keep alpha = 2*rank for stable scaling)")
+    parser.add_argument("--lora_dropout", type=float, default=0.2,
+                        help="LoRA dropout (0.2 for stronger regularization with r=32)")
+    parser.add_argument("--lora_targets", default="c_attn,c_proj,c_fc",
+                        help="LoRA target modules: c_attn+c_proj (attention) + c_fc (MLP FFN)")
+
+    # Training
+    parser.add_argument("--batch_size", type=int, default=16,
+                        help="Training batch size (use 8 if OOM, 32 if >8GB VRAM)")
+    parser.add_argument("--max_epochs", type=int, default=40,
+                        help="Maximum training epochs. Early stopping (patience=7) "
+                             "prevents overfitting if val_auroc plateaus.")
+    parser.add_argument("--learning_rate", type=float, default=5e-5,
+                        help="Peak learning rate (5e-5 for slower, more stable LoRA convergence)")
+    parser.add_argument("--weight_decay", type=float, default=0.01,
+                        help="AdamW weight decay")
+    parser.add_argument("--warmup_steps", type=int, default=1200,
+                        help="Linear warmup steps (1200 for slower ramp-up with lower LR)")
+    parser.add_argument("--scheduler", default="cosine",
+                        choices=["cosine", "exponential", "none"],
+                        help="LR scheduler type")
+    parser.add_argument("--grad_clip", type=float, default=1.0,
+                        help="Gradient clipping norm")
+    parser.add_argument("--grad_accumulation", type=int, default=2,
+                        help="Gradient accumulation steps (2 = effective batch size 32 for more stable gradients)")
+    parser.add_argument("--precision", default="16-mixed",
+                        help="Training precision: 32, 16-mixed (FP16), bf16-mixed (Ampere+)")
+    parser.add_argument("--val_check_interval", type=float, default=1.0,
+                        help="How often to run validation (1.0 = every epoch)")
+
+    # Loss & Class Imbalance
+    parser.add_argument("--binary_loss_weight", type=float, default=1.0,
+                        help="Weight for the binary toxicity loss head")
+    parser.add_argument("--auto_class_weight", action="store_true", default=False,
+                        help="Auto-compute class weights from training distribution. "
+                             "Disabled by default — focal_alpha already handles class imbalance. "
+                             "Enabling both double-counts the imbalance correction.")
+    parser.add_argument("--use_focal_loss", action="store_true", default=True,
+                        help="Use focal loss instead of standard BCE (helps with hard examples)")
+    parser.add_argument("--focal_gamma", type=float, default=1.5,
+                        help="Focal loss gamma (1.5 — less aggressive hard-example weighting on cleaner data)")
+    parser.add_argument("--focal_alpha", type=float, default=0.45,
+                        help="Focal loss alpha weight for the toxic class. "
+                             "0.45 is calibrated for the ~54%% toxic imbalance "
+                             "after removing T3DB and ClinTox from training. "
+                             "(0.5 = no correction; lower values penalise FN more).")
+
+
+    # Early stopping
+    parser.add_argument("--es_patience", type=int, default=20,
+                        help="Early stopping patience (epochs). 20 allows cosine LR decay to fully complete before stopping.")
+    parser.add_argument("--es_min_delta", type=float, default=1e-3,
+                        help="Early stopping minimum improvement")
+
+    # Hardware
+    parser.add_argument("--devices", type=int, default=1,
+                        help="Number of GPUs/devices")
+    parser.add_argument("--num_workers", type=int, default=4,
+                        help="DataLoader workers (0 = main thread, 4 = background prefetch)")
+
+    # Misc
+    parser.add_argument("--seed", type=int, default=42,
+                        help="Random seed for reproducibility")
+
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    main(args)

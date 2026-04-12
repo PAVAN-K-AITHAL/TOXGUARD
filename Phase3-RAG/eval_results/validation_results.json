@@ -1,0 +1,2409 @@
+{
+  "pillar1": {
+    "error": "cannot import name 'validate_core_schema' from 'pydantic_core' (C:\\anaconda3\\Lib\\site-packages\\pydantic_core\\__init__.py)"
+  },
+  "pillar2": {
+    "per_profile": [
+      {
+        "molecule": "Nitrobenzene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Arsenic",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Lead",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Mercury",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Benzene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Formaldehyde",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Methanol",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Ethylene glycol",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Cyanide",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Atrazine",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "2,4-Dinitrotoluene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Chlorobenzene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Aniline",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Toluene diisocyanate",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Acrolein",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Paraquat",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Dioxin (TCDD)",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "PCBs",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Vinyl chloride",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Acrylonitrile",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "2-Nitrofluorene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Quintozene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Trimethylarsine",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Diethylmercury",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "4-Aminoazobenzene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "DBCP",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "TBTO",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Methoxychlor",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "Hexachlorobutadiene",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      },
+      {
+        "molecule": "NDMA",
+        "dose_fabrication": {
+          "passed": true,
+          "fabricated_values": [],
+          "total_values": 0,
+          "verification_rate": 1.0
+        },
+        "identifier_accuracy": {
+          "accuracy": 1.0,
+          "total_checked": 0,
+          "mismatches": []
+        },
+        "hedging_compliance": {
+          "compliance": 1.0,
+          "total_checked": 0,
+          "violations": []
+        },
+        "composite": {
+          "composite_score": 1.0,
+          "gate_triggered": false,
+          "ragas_available": false,
+          "components": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 1.0,
+            "identifier_accuracy": 1.0,
+            "hedging_compliance": 1.0
+          },
+          "weights": {
+            "ragas_faithfulness": 0.0,
+            "dose_fabrication": 0.5,
+            "identifier_accuracy": 0.25,
+            "hedging_compliance": 0.25
+          }
+        }
+      }
+    ],
+    "aggregate": {
+      "num_profiles": 30,
+      "dose_fabrication_rate": 0.0,
+      "mean_identifier_accuracy": 1.0,
+      "mean_hedging_compliance": 1.0,
+      "mean_composite": 1.0,
+      "hard_gates_triggered": 0
+    }
+  },
+  "pillar3": [
+    {
+      "golden_entry": {
+        "id": "GT-001",
+        "tier": "exact_match",
+        "iupac_name": "nitrobenzene",
+        "common_name": "Nitrobenzene",
+        "cas_number": "98-95-3",
+        "expected": {
+          "mechanism_keywords": [
+            "methemoglobin",
+            "hemoglobin",
+            "oxidative"
+          ],
+          "target_organs": [
+            "liver",
+            "blood",
+            "kidney"
+          ],
+          "ld50_values": [
+            "640 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Acute Tox. 3",
+            "H301"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Nitrobenzene is a toxic aromatic compound that causes methemoglobinemia through oxidation of hemoglobin. Primary target organs are blood, liver, and kidneys. Oral LD50 in rats is approximately 640 mg/kg."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "methemoglobin",
+          "hemoglobin"
+        ],
+        "expected_keywords_missing": [
+          "oxidative"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-002",
+        "tier": "exact_match",
+        "iupac_name": "arsenic trioxide",
+        "common_name": "Arsenic",
+        "cas_number": "1327-53-3",
+        "expected": {
+          "mechanism_keywords": [
+            "oxidative stress",
+            "enzyme inhibition",
+            "sulfhydryl"
+          ],
+          "target_organs": [
+            "liver",
+            "kidney",
+            "skin",
+            "lung"
+          ],
+          "ld50_values": [
+            "15 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Acute Tox. 2",
+            "H300"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Arsenic is a potent toxin that inhibits sulfhydryl-containing enzymes and induces oxidative stress. Targets multiple organ systems including liver, kidneys, skin, and lungs. Oral LD50 approximately 15 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "oxidative stress",
+          "sulfhydryl"
+        ],
+        "expected_keywords_missing": [
+          "enzyme inhibition"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-003",
+        "tier": "exact_match",
+        "iupac_name": "lead",
+        "common_name": "Lead",
+        "cas_number": "7439-92-1",
+        "expected": {
+          "mechanism_keywords": [
+            "enzyme inhibition",
+            "calcium mimicry",
+            "ALAD",
+            "heme synthesis"
+          ],
+          "target_organs": [
+            "nervous system",
+            "kidney",
+            "blood"
+          ],
+          "ld50_values": [],
+          "ghs_category": [
+            "Repr. 1A",
+            "H360"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Lead is a neurotoxic heavy metal that inhibits delta-aminolevulinic acid dehydratase (ALAD) disrupting heme synthesis, and mimics calcium in neural signaling. Primary targets are the nervous system, kidneys, and blood."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.5,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.625,
+        "expected_keywords_found": [
+          "ALAD",
+          "heme synthesis"
+        ],
+        "expected_keywords_missing": [
+          "enzyme inhibition",
+          "calcium mimicry"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-004",
+        "tier": "exact_match",
+        "iupac_name": "mercury",
+        "common_name": "Mercury",
+        "cas_number": "7439-97-6",
+        "expected": {
+          "mechanism_keywords": [
+            "sulfhydryl",
+            "protein binding",
+            "CNS",
+            "methylmercury"
+          ],
+          "target_organs": [
+            "brain",
+            "kidney",
+            "nervous system"
+          ],
+          "ld50_values": [],
+          "ghs_category": [
+            "Acute Tox. 2"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Mercury binds to sulfhydryl groups on proteins and enzymes, disrupting cellular function. Organic forms (methylmercury) are potent neurotoxins affecting the central nervous system and kidneys."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.5,
+        "organ_coverage": 0.6666666666666666,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5416666666666666,
+        "expected_keywords_found": [
+          "sulfhydryl",
+          "methylmercury"
+        ],
+        "expected_keywords_missing": [
+          "protein binding",
+          "CNS"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-005",
+        "tier": "exact_match",
+        "iupac_name": "benzene",
+        "common_name": "Benzene",
+        "cas_number": "71-43-2",
+        "expected": {
+          "mechanism_keywords": [
+            "bone marrow",
+            "leukemia",
+            "hematotoxicity",
+            "benzene oxide"
+          ],
+          "target_organs": [
+            "bone marrow",
+            "blood",
+            "liver"
+          ],
+          "ld50_values": [
+            "930 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Carc. 1A",
+            "H350"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Benzene is a known human carcinogen causing leukemia through bone marrow toxicity. Metabolized to reactive intermediates (benzene oxide, muconaldehyde) that damage hematopoietic stem cells. Oral LD50 approximately 930 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.75,
+        "organ_coverage": 0.3333333333333333,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5208333333333333,
+        "expected_keywords_found": [
+          "bone marrow",
+          "leukemia",
+          "benzene oxide"
+        ],
+        "expected_keywords_missing": [
+          "hematotoxicity"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-006",
+        "tier": "exact_match",
+        "iupac_name": "methanal",
+        "common_name": "Formaldehyde",
+        "cas_number": "50-00-0",
+        "expected": {
+          "mechanism_keywords": [
+            "protein crosslinking",
+            "DNA damage",
+            "irritant",
+            "carcinogen"
+          ],
+          "target_organs": [
+            "respiratory tract",
+            "eyes",
+            "skin"
+          ],
+          "ld50_values": [
+            "100 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Carc. 1B",
+            "H350"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Formaldehyde is a reactive aldehyde that crosslinks proteins and damages DNA. Classified as a human carcinogen (nasopharyngeal). Causes severe irritation to the respiratory tract, eyes, and skin. Oral LD50 approximately 100 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.25,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5625,
+        "expected_keywords_found": [
+          "carcinogen"
+        ],
+        "expected_keywords_missing": [
+          "protein crosslinking",
+          "DNA damage",
+          "irritant"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-007",
+        "tier": "exact_match",
+        "iupac_name": "methanol",
+        "common_name": "Methanol",
+        "cas_number": "67-56-1",
+        "expected": {
+          "mechanism_keywords": [
+            "formic acid",
+            "optic nerve",
+            "metabolic acidosis",
+            "alcohol dehydrogenase"
+          ],
+          "target_organs": [
+            "eyes",
+            "CNS",
+            "liver"
+          ],
+          "ld50_values": [
+            "5628 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Acute Tox. 3",
+            "H301"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Methanol is metabolized by alcohol dehydrogenase to formaldehyde and then formic acid, which inhibits cytochrome c oxidase causing metabolic acidosis and optic nerve damage. Oral LD50 approximately 5628 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5,
+        "expected_keywords_found": [
+          "formic acid",
+          "optic nerve",
+          "metabolic acidosis",
+          "alcohol dehydrogenase"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-008",
+        "tier": "exact_match",
+        "iupac_name": "ethane-1,2-diol",
+        "common_name": "Ethylene glycol",
+        "cas_number": "107-21-1",
+        "expected": {
+          "mechanism_keywords": [
+            "oxalic acid",
+            "calcium oxalate",
+            "renal failure",
+            "metabolic acidosis"
+          ],
+          "target_organs": [
+            "kidney",
+            "CNS",
+            "liver"
+          ],
+          "ld50_values": [
+            "4700 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Acute Tox. 4",
+            "H302"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Ethylene glycol is metabolized to glycolic acid and oxalic acid. Oxalate forms calcium oxalate crystals in renal tubules causing kidney failure. Causes CNS depression and metabolic acidosis. Oral LD50 approximately 4700 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.75,
+        "organ_coverage": 0.6666666666666666,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.6041666666666666,
+        "expected_keywords_found": [
+          "oxalic acid",
+          "calcium oxalate",
+          "metabolic acidosis"
+        ],
+        "expected_keywords_missing": [
+          "renal failure"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-009",
+        "tier": "exact_match",
+        "iupac_name": "hydrogen cyanide",
+        "common_name": "Cyanide",
+        "cas_number": "74-90-8",
+        "expected": {
+          "mechanism_keywords": [
+            "cytochrome c oxidase",
+            "electron transport",
+            "cellular asphyxiation"
+          ],
+          "target_organs": [
+            "CNS",
+            "heart",
+            "respiratory system"
+          ],
+          "ld50_values": [
+            "3.7 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Acute Tox. 1",
+            "H300"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Cyanide inhibits cytochrome c oxidase (Complex IV) in mitochondria, blocking aerobic respiration and causing cellular asphyxiation. Extremely toxic with oral LD50 of 3.7 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.41666666666666663,
+        "expected_keywords_found": [
+          "cytochrome c oxidase",
+          "cellular asphyxiation"
+        ],
+        "expected_keywords_missing": [
+          "electron transport"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-010",
+        "tier": "exact_match",
+        "iupac_name": "2-chloro-4-ethylamino-6-isopropylamino-1,3,5-triazine",
+        "common_name": "Atrazine",
+        "cas_number": "1912-24-9",
+        "expected": {
+          "mechanism_keywords": [
+            "endocrine disruption",
+            "aromatase",
+            "herbicide"
+          ],
+          "target_organs": [
+            "endocrine system",
+            "liver",
+            "reproductive"
+          ],
+          "ld50_values": [
+            "672 mg/kg",
+            "oral",
+            "rat"
+          ],
+          "ghs_category": [
+            "Aquatic Chronic 1",
+            "H410"
+          ],
+          "expected_retrieval_method": "exact_match",
+          "ground_truth_summary": "Atrazine is a triazine herbicide that disrupts endocrine function by inducing aromatase activity, converting androgens to estrogens. Targets the endocrine system, liver, and reproductive organs. Oral LD50 approximately 672 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "aromatase",
+          "herbicide"
+        ],
+        "expected_keywords_missing": [
+          "endocrine disruption"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-011",
+        "tier": "semantic_analogue",
+        "iupac_name": "2,4-dinitrotoluene",
+        "common_name": "2,4-Dinitrotoluene",
+        "cas_number": "121-14-2",
+        "expected": {
+          "mechanism_keywords": [
+            "methemoglobin",
+            "carcinogen",
+            "nitro reduction"
+          ],
+          "target_organs": [
+            "liver",
+            "blood"
+          ],
+          "ld50_values": [
+            "268 mg/kg"
+          ],
+          "ghs_category": [
+            "Carc. 1B"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "2,4-Dinitrotoluene is a nitroaromatic compound that causes methemoglobinemia and is classified as a probable human carcinogen. Metabolized via nitro reduction to hepatotoxic and hematotoxic intermediates."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 0.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.25,
+        "expected_keywords_found": [
+          "methemoglobin",
+          "carcinogen",
+          "nitro reduction"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-012",
+        "tier": "semantic_analogue",
+        "iupac_name": "chlorobenzene",
+        "common_name": "Chlorobenzene",
+        "cas_number": "108-90-7",
+        "expected": {
+          "mechanism_keywords": [
+            "CNS depression",
+            "hepatotoxicity",
+            "epoxide"
+          ],
+          "target_organs": [
+            "liver",
+            "CNS",
+            "kidney"
+          ],
+          "ld50_values": [
+            "2290 mg/kg"
+          ],
+          "ghs_category": [
+            "Acute Tox. 4"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Chlorobenzene is metabolized to reactive epoxide intermediates causing hepatotoxicity. Primary effects include CNS depression at high exposures and liver/kidney damage upon chronic exposure."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 0.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5,
+        "expected_keywords_found": [
+          "CNS depression",
+          "hepatotoxicity",
+          "epoxide"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-013",
+        "tier": "semantic_analogue",
+        "iupac_name": "aniline",
+        "common_name": "Aniline",
+        "cas_number": "62-53-3",
+        "expected": {
+          "mechanism_keywords": [
+            "methemoglobin",
+            "aromatic amine",
+            "N-hydroxylation"
+          ],
+          "target_organs": [
+            "blood",
+            "spleen",
+            "liver"
+          ],
+          "ld50_values": [
+            "250 mg/kg"
+          ],
+          "ghs_category": [
+            "Acute Tox. 3",
+            "Carc. 2"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Aniline is an aromatic amine that causes methemoglobinemia through N-hydroxylation producing phenylhydroxylamine. Targets blood, spleen, and liver. Oral LD50 approximately 250 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.75,
+        "expected_keywords_found": [
+          "methemoglobin",
+          "aromatic amine",
+          "N-hydroxylation"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-014",
+        "tier": "semantic_analogue",
+        "iupac_name": "toluene-2,4-diisocyanate",
+        "common_name": "Toluene diisocyanate",
+        "cas_number": "584-84-9",
+        "expected": {
+          "mechanism_keywords": [
+            "respiratory sensitizer",
+            "isocyanate",
+            "asthma"
+          ],
+          "target_organs": [
+            "respiratory tract",
+            "skin"
+          ],
+          "ld50_values": [
+            "5800 mg/kg"
+          ],
+          "ghs_category": [
+            "Resp. Sens. 1"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Toluene diisocyanate is a potent respiratory sensitizer causing occupational asthma. Reactive isocyanate groups conjugate with proteins forming immunogenic haptens. Primarily affects the respiratory tract and skin."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 1.0,
+        "ld50_accuracy": 0.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5,
+        "expected_keywords_found": [
+          "respiratory sensitizer",
+          "isocyanate",
+          "asthma"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-015",
+        "tier": "semantic_analogue",
+        "iupac_name": "prop-2-enal",
+        "common_name": "Acrolein",
+        "cas_number": "107-02-8",
+        "expected": {
+          "mechanism_keywords": [
+            "electrophilic",
+            "glutathione depletion",
+            "reactive aldehyde"
+          ],
+          "target_organs": [
+            "respiratory tract",
+            "eyes",
+            "GI tract"
+          ],
+          "ld50_values": [
+            "46 mg/kg"
+          ],
+          "ghs_category": [
+            "Acute Tox. 1",
+            "H300"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Acrolein is a highly reactive alpha-beta-unsaturated aldehyde that depletes glutathione and forms protein adducts. Extremely irritating to respiratory tract and eyes. Oral LD50 approximately 46 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.0,
+        "organ_coverage": 0.6666666666666666,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.41666666666666663,
+        "expected_keywords_found": [],
+        "expected_keywords_missing": [
+          "electrophilic",
+          "glutathione depletion",
+          "reactive aldehyde"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-016",
+        "tier": "semantic_analogue",
+        "iupac_name": "1,1-dimethyl-4,4-bipyridinium",
+        "common_name": "Paraquat",
+        "cas_number": "4685-14-7",
+        "expected": {
+          "mechanism_keywords": [
+            "superoxide",
+            "redox cycling",
+            "pulmonary fibrosis"
+          ],
+          "target_organs": [
+            "lung",
+            "kidney",
+            "liver"
+          ],
+          "ld50_values": [
+            "150 mg/kg"
+          ],
+          "ghs_category": [
+            "Acute Tox. 2"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Paraquat undergoes redox cycling generating superoxide radicals, causing oxidative damage primarily to the lungs leading to progressive pulmonary fibrosis. Oral LD50 approximately 150 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.3333333333333333,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5833333333333333,
+        "expected_keywords_found": [
+          "superoxide",
+          "redox cycling",
+          "pulmonary fibrosis"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-017",
+        "tier": "semantic_analogue",
+        "iupac_name": "2,3,7,8-tetrachlorodibenzo-p-dioxin",
+        "common_name": "Dioxin (TCDD)",
+        "cas_number": "1746-01-6",
+        "expected": {
+          "mechanism_keywords": [
+            "AhR",
+            "aryl hydrocarbon receptor",
+            "CYP1A1",
+            "endocrine disruption"
+          ],
+          "target_organs": [
+            "liver",
+            "immune system",
+            "skin"
+          ],
+          "ld50_values": [
+            "0.02 mg/kg"
+          ],
+          "ghs_category": [
+            "Carc. 1A"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "TCDD binds the aryl hydrocarbon receptor (AhR) with extremely high affinity, inducing CYP1A1 and disrupting gene expression. One of the most toxic synthetic compounds. Causes chloracne, hepatotoxicity, immunosuppression, and cancer."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.75,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 0.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.1875,
+        "expected_keywords_found": [
+          "AhR",
+          "aryl hydrocarbon receptor",
+          "CYP1A1"
+        ],
+        "expected_keywords_missing": [
+          "endocrine disruption"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-018",
+        "tier": "semantic_analogue",
+        "iupac_name": "polychlorinated biphenyls",
+        "common_name": "PCBs",
+        "cas_number": "1336-36-3",
+        "expected": {
+          "mechanism_keywords": [
+            "AhR",
+            "bioaccumulation",
+            "endocrine disruption",
+            "persistent"
+          ],
+          "target_organs": [
+            "liver",
+            "skin",
+            "immune system",
+            "nervous system"
+          ],
+          "ld50_values": [],
+          "ghs_category": [
+            "Carc. 1A"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "PCBs are persistent organic pollutants that bioaccumulate in the food chain. Coplanar congeners activate the aryl hydrocarbon receptor. Cause hepatotoxicity, skin lesions, neurodevelopmental effects, and cancer."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.25,
+        "organ_coverage": 0.25,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.375,
+        "expected_keywords_found": [
+          "persistent"
+        ],
+        "expected_keywords_missing": [
+          "AhR",
+          "bioaccumulation",
+          "endocrine disruption"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-019",
+        "tier": "semantic_analogue",
+        "iupac_name": "chloroethene",
+        "common_name": "Vinyl chloride",
+        "cas_number": "75-01-4",
+        "expected": {
+          "mechanism_keywords": [
+            "angiosarcoma",
+            "CYP2E1",
+            "chloroethylene oxide"
+          ],
+          "target_organs": [
+            "liver"
+          ],
+          "ld50_values": [],
+          "ghs_category": [
+            "Carc. 1A",
+            "H350"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Vinyl chloride is metabolized by CYP2E1 to chloroethylene oxide, a reactive epoxide that alkylates DNA causing hepatic angiosarcoma. Classified as a known human carcinogen."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.5,
+        "expected_keywords_found": [
+          "angiosarcoma",
+          "CYP2E1",
+          "chloroethylene oxide"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-020",
+        "tier": "semantic_analogue",
+        "iupac_name": "2-propenenitrile",
+        "common_name": "Acrylonitrile",
+        "cas_number": "107-13-1",
+        "expected": {
+          "mechanism_keywords": [
+            "cyanide release",
+            "epoxide",
+            "glutathione depletion"
+          ],
+          "target_organs": [
+            "CNS",
+            "liver",
+            "lung"
+          ],
+          "ld50_values": [
+            "78 mg/kg"
+          ],
+          "ghs_category": [
+            "Carc. 1B",
+            "H350"
+          ],
+          "expected_retrieval_method": "semantic",
+          "ground_truth_summary": "Acrylonitrile is metabolized to cyanide (releasing HCN) and to cyanoethylene oxide (a reactive epoxide). Causes CNS toxicity via cyanide mechanism and carcinogenicity via epoxide pathway. Oral LD50 approximately 78 mg/kg in rats."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.3333333333333333,
+        "organ_coverage": 0.3333333333333333,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 0.0,
+        "auto_score": 0.41666666666666663,
+        "expected_keywords_found": [
+          "epoxide"
+        ],
+        "expected_keywords_missing": [
+          "cyanide release",
+          "glutathione depletion"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-021",
+        "tier": "novel_rare",
+        "iupac_name": "2-nitrofluorene",
+        "common_name": "2-Nitrofluorene",
+        "cas_number": "607-57-8",
+        "expected": {
+          "mechanism_keywords": [
+            "nitro reduction",
+            "aromatic amine",
+            "mutagenic"
+          ],
+          "target_organs": [
+            "liver",
+            "bladder"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "nitrobenzene",
+          "ground_truth_summary": "2-Nitrofluorene is a polycyclic nitroaromatic compound. Metabolized via nitro reduction to mutagenic aromatic amine intermediates. RAG should retrieve related nitroaromatic toxicology via semantic similarity."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.75,
+        "expected_keywords_found": [
+          "nitro reduction",
+          "aromatic amine",
+          "mutagenic"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-022",
+        "tier": "novel_rare",
+        "iupac_name": "pentachloronitrobenzene",
+        "common_name": "Quintozene",
+        "cas_number": "82-68-8",
+        "expected": {
+          "mechanism_keywords": [
+            "organochlorine",
+            "hepatotoxicity",
+            "fungicide"
+          ],
+          "target_organs": [
+            "liver",
+            "kidney"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "nitrobenzene",
+          "ground_truth_summary": "Pentachloronitrobenzene is a chlorinated nitroaromatic fungicide. RAG should bridge structural similarity to chlorobenzene and nitrobenzene toxicology from T3DB."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.3333333333333333,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.5833333333333333,
+        "expected_keywords_found": [
+          "fungicide"
+        ],
+        "expected_keywords_missing": [
+          "organochlorine",
+          "hepatotoxicity"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-023",
+        "tier": "novel_rare",
+        "iupac_name": "trimethylarsine",
+        "common_name": "Trimethylarsine",
+        "cas_number": "593-88-4",
+        "expected": {
+          "mechanism_keywords": [
+            "arsenic",
+            "methylation",
+            "volatile"
+          ],
+          "target_organs": [
+            "lung",
+            "liver"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "arsenic",
+          "ground_truth_summary": "Trimethylarsine is a volatile organoarsenic compound. RAG should retrieve arsenic-related toxicology via semantic similarity to arsenic compounds in T3DB."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "arsenic",
+          "volatile"
+        ],
+        "expected_keywords_missing": [
+          "methylation"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-024",
+        "tier": "novel_rare",
+        "iupac_name": "diethylmercury",
+        "common_name": "Diethylmercury",
+        "cas_number": "627-44-1",
+        "expected": {
+          "mechanism_keywords": [
+            "organomercury",
+            "neurotoxicity",
+            "lipophilic"
+          ],
+          "target_organs": [
+            "CNS",
+            "kidney"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "mercury",
+          "ground_truth_summary": "Diethylmercury is an extremely toxic organomercury compound. RAG should retrieve mercury-related neurotoxicology from T3DB via semantic similarity."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.3333333333333333,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.5833333333333333,
+        "expected_keywords_found": [
+          "organomercury"
+        ],
+        "expected_keywords_missing": [
+          "neurotoxicity",
+          "lipophilic"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-025",
+        "tier": "novel_rare",
+        "iupac_name": "4-aminoazobenzene",
+        "common_name": "4-Aminoazobenzene",
+        "cas_number": "60-09-3",
+        "expected": {
+          "mechanism_keywords": [
+            "azo dye",
+            "carcinogenic",
+            "N-hydroxylation"
+          ],
+          "target_organs": [
+            "liver",
+            "bladder"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "aniline",
+          "ground_truth_summary": "4-Aminoazobenzene is an aromatic azo dye metabolized to aniline-like amines via azo reduction. RAG should retrieve aromatic amine toxicology from T3DB."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.3333333333333333,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.5833333333333333,
+        "expected_keywords_found": [
+          "azo dye"
+        ],
+        "expected_keywords_missing": [
+          "carcinogenic",
+          "N-hydroxylation"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-026",
+        "tier": "novel_rare",
+        "iupac_name": "1,2-dibromo-3-chloropropane",
+        "common_name": "DBCP",
+        "cas_number": "96-12-8",
+        "expected": {
+          "mechanism_keywords": [
+            "alkylating",
+            "reproductive toxicant",
+            "spermatogenesis"
+          ],
+          "target_organs": [
+            "testes",
+            "liver",
+            "kidney"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "carbon tetrachloride",
+          "ground_truth_summary": "DBCP is a halogenated alkylating agent that causes male infertility by disrupting spermatogenesis. RAG should retrieve related halogenated hydrocarbon toxicology."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "alkylating",
+          "spermatogenesis"
+        ],
+        "expected_keywords_missing": [
+          "reproductive toxicant"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-027",
+        "tier": "novel_rare",
+        "iupac_name": "tributyltin oxide",
+        "common_name": "TBTO",
+        "cas_number": "56-35-9",
+        "expected": {
+          "mechanism_keywords": [
+            "organometallic",
+            "immunotoxicity",
+            "endocrine disruption"
+          ],
+          "target_organs": [
+            "immune system",
+            "liver",
+            "endocrine"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "lead",
+          "ground_truth_summary": "Tributyltin oxide is an organotin compound causing immunotoxicity and endocrine disruption. RAG should retrieve organometallic toxicology via semantic similarity."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.3333333333333333,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.8333333333333333,
+        "expected_keywords_found": [
+          "organometallic",
+          "immunotoxicity",
+          "endocrine disruption"
+        ],
+        "expected_keywords_missing": []
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-028",
+        "tier": "novel_rare",
+        "iupac_name": "methoxychlor",
+        "common_name": "Methoxychlor",
+        "cas_number": "72-43-5",
+        "expected": {
+          "mechanism_keywords": [
+            "estrogenic",
+            "organochlorine",
+            "endocrine disruption"
+          ],
+          "target_organs": [
+            "reproductive system",
+            "liver"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "atrazine",
+          "ground_truth_summary": "Methoxychlor is an organochlorine pesticide with estrogenic activity. RAG should retrieve endocrine-disrupting pesticide toxicology from T3DB."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "estrogenic",
+          "organochlorine"
+        ],
+        "expected_keywords_missing": [
+          "endocrine disruption"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-029",
+        "tier": "novel_rare",
+        "iupac_name": "hexachlorobutadiene",
+        "common_name": "Hexachlorobutadiene",
+        "cas_number": "87-68-3",
+        "expected": {
+          "mechanism_keywords": [
+            "nephrotoxicity",
+            "glutathione conjugation",
+            "chlorinated"
+          ],
+          "target_organs": [
+            "kidney",
+            "liver"
+          ],
+          "ld50_values": [],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "carbon tetrachloride",
+          "ground_truth_summary": "Hexachlorobutadiene is a chlorinated hydrocarbon nephrotoxin metabolized via glutathione conjugation to reactive cysteine S-conjugates. RAG should retrieve chlorinated hydrocarbon toxicology."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 0.6666666666666666,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 1.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.6666666666666666,
+        "expected_keywords_found": [
+          "glutathione conjugation",
+          "chlorinated"
+        ],
+        "expected_keywords_missing": [
+          "nephrotoxicity"
+        ]
+      }
+    },
+    {
+      "golden_entry": {
+        "id": "GT-030",
+        "tier": "novel_rare",
+        "iupac_name": "dimethylnitrosamine",
+        "common_name": "NDMA",
+        "cas_number": "62-75-9",
+        "expected": {
+          "mechanism_keywords": [
+            "alkylating",
+            "CYP2E1",
+            "hepatocarcinogen"
+          ],
+          "target_organs": [
+            "liver"
+          ],
+          "ld50_values": [
+            "37 mg/kg"
+          ],
+          "ghs_category": [],
+          "expected_retrieval_method": "semantic",
+          "expected_analogue_in_t3db": "formaldehyde",
+          "ground_truth_summary": "N-Nitrosodimethylamine is a potent hepatocarcinogen metabolized by CYP2E1 to methylating species that alkylate DNA. RAG should retrieve nitrosamine/alkylating agent toxicology."
+        }
+      },
+      "profile": {},
+      "auto_scores": {
+        "keyword_coverage": 1.0,
+        "organ_coverage": 0.0,
+        "ld50_accuracy": 0.0,
+        "ghs_match": 1.0,
+        "auto_score": 0.5,
+        "expected_keywords_found": [
+          "alkylating",
+          "CYP2E1",
+          "hepatocarcinogen"
+        ],
+        "expected_keywords_missing": []
+      }
+    }
+  ],
+  "pillar4": {
+    "error": "cannot import name 'validate_core_schema' from 'pydantic_core' (C:\\anaconda3\\Lib\\site-packages\\pydantic_core\\__init__.py)"
+  }
+}

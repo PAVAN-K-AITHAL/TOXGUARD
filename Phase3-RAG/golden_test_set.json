@@ -1,0 +1,639 @@
+{
+  "version": "2.0",
+  "description": "Golden test set for ToxGuard RAG validation. 40 molecules across 4 tiers: exact match (T3DB), semantic analogue, novel/rare (PubChem analogues), and Phase 4 detoxification pairs.",
+  "molecules": [
+    {
+      "id": "GT-001",
+      "tier": "exact_match",
+      "iupac_name": "nitrobenzene",
+      "common_name": "Nitrobenzene",
+      "cas_number": "98-95-3",
+      "expected": {
+        "mechanism_keywords": ["methemoglobin", "hemoglobin", "oxidative"],
+        "target_organs": ["liver", "blood", "kidney"],
+        "ld50_values": ["640 mg/kg", "oral", "rat"],
+        "ghs_category": ["Acute Tox. 3", "H301"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Nitrobenzene is a toxic aromatic compound that causes methemoglobinemia through oxidation of hemoglobin. Primary target organs are blood, liver, and kidneys. Oral LD50 in rats is approximately 640 mg/kg."
+      }
+    },
+    {
+      "id": "GT-002",
+      "tier": "exact_match",
+      "iupac_name": "arsenic trioxide",
+      "common_name": "Arsenic",
+      "cas_number": "1327-53-3",
+      "expected": {
+        "mechanism_keywords": ["oxidative stress", "enzyme inhibition", "sulfhydryl"],
+        "target_organs": ["liver", "kidney", "skin", "lung"],
+        "ld50_values": ["15 mg/kg", "oral", "rat"],
+        "ghs_category": ["Acute Tox. 2", "H300"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Arsenic is a potent toxin that inhibits sulfhydryl-containing enzymes and induces oxidative stress. Targets multiple organ systems including liver, kidneys, skin, and lungs. Oral LD50 approximately 15 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-003",
+      "tier": "exact_match",
+      "iupac_name": "lead",
+      "common_name": "Lead",
+      "cas_number": "7439-92-1",
+      "expected": {
+        "mechanism_keywords": ["enzyme inhibition", "calcium mimicry", "ALAD", "heme synthesis"],
+        "target_organs": ["nervous system", "kidney", "blood"],
+        "ld50_values": [],
+        "ghs_category": ["Repr. 1A", "H360"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Lead is a neurotoxic heavy metal that inhibits delta-aminolevulinic acid dehydratase (ALAD) disrupting heme synthesis, and mimics calcium in neural signaling. Primary targets are the nervous system, kidneys, and blood."
+      }
+    },
+    {
+      "id": "GT-004",
+      "tier": "exact_match",
+      "iupac_name": "mercury",
+      "common_name": "Mercury",
+      "cas_number": "7439-97-6",
+      "expected": {
+        "mechanism_keywords": ["sulfhydryl", "protein binding", "CNS", "methylmercury"],
+        "target_organs": ["brain", "kidney", "nervous system"],
+        "ld50_values": [],
+        "ghs_category": ["Acute Tox. 2"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Mercury binds to sulfhydryl groups on proteins and enzymes, disrupting cellular function. Organic forms (methylmercury) are potent neurotoxins affecting the central nervous system and kidneys."
+      }
+    },
+    {
+      "id": "GT-005",
+      "tier": "exact_match",
+      "iupac_name": "benzene",
+      "common_name": "Benzene",
+      "cas_number": "71-43-2",
+      "expected": {
+        "mechanism_keywords": ["bone marrow", "leukemia", "hematotoxicity", "benzene oxide"],
+        "target_organs": ["bone marrow", "blood", "liver"],
+        "ld50_values": ["930 mg/kg", "oral", "rat"],
+        "ghs_category": ["Carc. 1A", "H350"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Benzene is a known human carcinogen causing leukemia through bone marrow toxicity. Metabolized to reactive intermediates (benzene oxide, muconaldehyde) that damage hematopoietic stem cells. Oral LD50 approximately 930 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-006",
+      "tier": "exact_match",
+      "iupac_name": "methanal",
+      "common_name": "Formaldehyde",
+      "cas_number": "50-00-0",
+      "expected": {
+        "mechanism_keywords": ["protein crosslinking", "DNA damage", "irritant", "carcinogen"],
+        "target_organs": ["respiratory tract", "eyes", "skin"],
+        "ld50_values": ["100 mg/kg", "oral", "rat"],
+        "ghs_category": ["Carc. 1B", "H350"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Formaldehyde is a reactive aldehyde that crosslinks proteins and damages DNA. Classified as a human carcinogen (nasopharyngeal). Causes severe irritation to the respiratory tract, eyes, and skin. Oral LD50 approximately 100 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-007",
+      "tier": "exact_match",
+      "iupac_name": "methanol",
+      "common_name": "Methanol",
+      "cas_number": "67-56-1",
+      "expected": {
+        "mechanism_keywords": ["formic acid", "optic nerve", "metabolic acidosis", "alcohol dehydrogenase"],
+        "target_organs": ["eyes", "CNS", "liver"],
+        "ld50_values": ["5628 mg/kg", "oral", "rat"],
+        "ghs_category": ["Acute Tox. 3", "H301"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Methanol is metabolized by alcohol dehydrogenase to formaldehyde and then formic acid, which inhibits cytochrome c oxidase causing metabolic acidosis and optic nerve damage. Oral LD50 approximately 5628 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-008",
+      "tier": "exact_match",
+      "iupac_name": "ethane-1,2-diol",
+      "common_name": "Ethylene glycol",
+      "cas_number": "107-21-1",
+      "expected": {
+        "mechanism_keywords": ["oxalic acid", "calcium oxalate", "renal failure", "metabolic acidosis"],
+        "target_organs": ["kidney", "CNS", "liver"],
+        "ld50_values": ["4700 mg/kg", "oral", "rat"],
+        "ghs_category": ["Acute Tox. 4", "H302"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Ethylene glycol is metabolized to glycolic acid and oxalic acid. Oxalate forms calcium oxalate crystals in renal tubules causing kidney failure. Causes CNS depression and metabolic acidosis. Oral LD50 approximately 4700 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-009",
+      "tier": "exact_match",
+      "iupac_name": "hydrogen cyanide",
+      "common_name": "Cyanide",
+      "cas_number": "74-90-8",
+      "expected": {
+        "mechanism_keywords": ["cytochrome c oxidase", "electron transport", "cellular asphyxiation"],
+        "target_organs": ["CNS", "heart", "respiratory system"],
+        "ld50_values": ["3.7 mg/kg", "oral", "rat"],
+        "ghs_category": ["Acute Tox. 1", "H300"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Cyanide inhibits cytochrome c oxidase (Complex IV) in mitochondria, blocking aerobic respiration and causing cellular asphyxiation. Extremely toxic with oral LD50 of 3.7 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-010",
+      "tier": "exact_match",
+      "iupac_name": "2-chloro-4-ethylamino-6-isopropylamino-1,3,5-triazine",
+      "common_name": "Atrazine",
+      "cas_number": "1912-24-9",
+      "expected": {
+        "mechanism_keywords": ["endocrine disruption", "aromatase", "herbicide"],
+        "target_organs": ["endocrine system", "liver", "reproductive"],
+        "ld50_values": ["672 mg/kg", "oral", "rat"],
+        "ghs_category": ["Aquatic Chronic 1", "H410"],
+        "expected_retrieval_method": "exact_match",
+        "ground_truth_summary": "Atrazine is a triazine herbicide that disrupts endocrine function by inducing aromatase activity, converting androgens to estrogens. Targets the endocrine system, liver, and reproductive organs. Oral LD50 approximately 672 mg/kg in rats."
+      }
+    },
+
+    {
+      "id": "GT-011",
+      "tier": "semantic_analogue",
+      "iupac_name": "2,4-dinitrotoluene",
+      "common_name": "2,4-Dinitrotoluene",
+      "cas_number": "121-14-2",
+      "expected": {
+        "mechanism_keywords": ["methemoglobin", "carcinogen", "nitro reduction"],
+        "target_organs": ["liver", "blood"],
+        "ld50_values": ["268 mg/kg"],
+        "ghs_category": ["Carc. 1B"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "2,4-Dinitrotoluene is a nitroaromatic compound that causes methemoglobinemia and is classified as a probable human carcinogen. Metabolized via nitro reduction to hepatotoxic and hematotoxic intermediates."
+      }
+    },
+    {
+      "id": "GT-012",
+      "tier": "semantic_analogue",
+      "iupac_name": "chlorobenzene",
+      "common_name": "Chlorobenzene",
+      "cas_number": "108-90-7",
+      "expected": {
+        "mechanism_keywords": ["CNS depression", "hepatotoxicity", "epoxide"],
+        "target_organs": ["liver", "CNS", "kidney"],
+        "ld50_values": ["2290 mg/kg"],
+        "ghs_category": ["Acute Tox. 4"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Chlorobenzene is metabolized to reactive epoxide intermediates causing hepatotoxicity. Primary effects include CNS depression at high exposures and liver/kidney damage upon chronic exposure."
+      }
+    },
+    {
+      "id": "GT-013",
+      "tier": "semantic_analogue",
+      "iupac_name": "aniline",
+      "common_name": "Aniline",
+      "cas_number": "62-53-3",
+      "expected": {
+        "mechanism_keywords": ["methemoglobin", "aromatic amine", "N-hydroxylation"],
+        "target_organs": ["blood", "spleen", "liver"],
+        "ld50_values": ["250 mg/kg"],
+        "ghs_category": ["Acute Tox. 3", "Carc. 2"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Aniline is an aromatic amine that causes methemoglobinemia through N-hydroxylation producing phenylhydroxylamine. Targets blood, spleen, and liver. Oral LD50 approximately 250 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-014",
+      "tier": "semantic_analogue",
+      "iupac_name": "toluene-2,4-diisocyanate",
+      "common_name": "Toluene diisocyanate",
+      "cas_number": "584-84-9",
+      "expected": {
+        "mechanism_keywords": ["respiratory sensitizer", "isocyanate", "asthma"],
+        "target_organs": ["respiratory tract", "skin"],
+        "ld50_values": ["5800 mg/kg"],
+        "ghs_category": ["Resp. Sens. 1"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Toluene diisocyanate is a potent respiratory sensitizer causing occupational asthma. Reactive isocyanate groups conjugate with proteins forming immunogenic haptens. Primarily affects the respiratory tract and skin."
+      }
+    },
+    {
+      "id": "GT-015",
+      "tier": "semantic_analogue",
+      "iupac_name": "prop-2-enal",
+      "common_name": "Acrolein",
+      "cas_number": "107-02-8",
+      "expected": {
+        "mechanism_keywords": ["electrophilic", "glutathione depletion", "reactive aldehyde"],
+        "target_organs": ["respiratory tract", "eyes", "GI tract"],
+        "ld50_values": ["46 mg/kg"],
+        "ghs_category": ["Acute Tox. 1", "H300"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Acrolein is a highly reactive alpha-beta-unsaturated aldehyde that depletes glutathione and forms protein adducts. Extremely irritating to respiratory tract and eyes. Oral LD50 approximately 46 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-016",
+      "tier": "semantic_analogue",
+      "iupac_name": "1,1-dimethyl-4,4-bipyridinium",
+      "common_name": "Paraquat",
+      "cas_number": "4685-14-7",
+      "expected": {
+        "mechanism_keywords": ["superoxide", "redox cycling", "pulmonary fibrosis"],
+        "target_organs": ["lung", "kidney", "liver"],
+        "ld50_values": ["150 mg/kg"],
+        "ghs_category": ["Acute Tox. 2"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Paraquat undergoes redox cycling generating superoxide radicals, causing oxidative damage primarily to the lungs leading to progressive pulmonary fibrosis. Oral LD50 approximately 150 mg/kg in rats."
+      }
+    },
+    {
+      "id": "GT-017",
+      "tier": "semantic_analogue",
+      "iupac_name": "2,3,7,8-tetrachlorodibenzo-p-dioxin",
+      "common_name": "Dioxin (TCDD)",
+      "cas_number": "1746-01-6",
+      "expected": {
+        "mechanism_keywords": ["AhR", "aryl hydrocarbon receptor", "CYP1A1", "endocrine disruption"],
+        "target_organs": ["liver", "immune system", "skin"],
+        "ld50_values": ["0.02 mg/kg"],
+        "ghs_category": ["Carc. 1A"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "TCDD binds the aryl hydrocarbon receptor (AhR) with extremely high affinity, inducing CYP1A1 and disrupting gene expression. One of the most toxic synthetic compounds. Causes chloracne, hepatotoxicity, immunosuppression, and cancer."
+      }
+    },
+    {
+      "id": "GT-018",
+      "tier": "semantic_analogue",
+      "iupac_name": "polychlorinated biphenyls",
+      "common_name": "PCBs",
+      "cas_number": "1336-36-3",
+      "expected": {
+        "mechanism_keywords": ["AhR", "bioaccumulation", "endocrine disruption", "persistent"],
+        "target_organs": ["liver", "skin", "immune system", "nervous system"],
+        "ld50_values": [],
+        "ghs_category": ["Carc. 1A"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "PCBs are persistent organic pollutants that bioaccumulate in the food chain. Coplanar congeners activate the aryl hydrocarbon receptor. Cause hepatotoxicity, skin lesions, neurodevelopmental effects, and cancer."
+      }
+    },
+    {
+      "id": "GT-019",
+      "tier": "semantic_analogue",
+      "iupac_name": "chloroethene",
+      "common_name": "Vinyl chloride",
+      "cas_number": "75-01-4",
+      "expected": {
+        "mechanism_keywords": ["angiosarcoma", "CYP2E1", "chloroethylene oxide"],
+        "target_organs": ["liver"],
+        "ld50_values": [],
+        "ghs_category": ["Carc. 1A", "H350"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Vinyl chloride is metabolized by CYP2E1 to chloroethylene oxide, a reactive epoxide that alkylates DNA causing hepatic angiosarcoma. Classified as a known human carcinogen."
+      }
+    },
+    {
+      "id": "GT-020",
+      "tier": "semantic_analogue",
+      "iupac_name": "2-propenenitrile",
+      "common_name": "Acrylonitrile",
+      "cas_number": "107-13-1",
+      "expected": {
+        "mechanism_keywords": ["cyanide release", "epoxide", "glutathione depletion"],
+        "target_organs": ["CNS", "liver", "lung"],
+        "ld50_values": ["78 mg/kg"],
+        "ghs_category": ["Carc. 1B", "H350"],
+        "expected_retrieval_method": "semantic",
+        "ground_truth_summary": "Acrylonitrile is metabolized to cyanide (releasing HCN) and to cyanoethylene oxide (a reactive epoxide). Causes CNS toxicity via cyanide mechanism and carcinogenicity via epoxide pathway. Oral LD50 approximately 78 mg/kg in rats."
+      }
+    },
+
+    {
+      "id": "GT-021",
+      "tier": "novel_rare",
+      "iupac_name": "2-nitrofluorene",
+      "common_name": "2-Nitrofluorene",
+      "cas_number": "607-57-8",
+      "expected": {
+        "mechanism_keywords": ["nitro reduction", "aromatic amine", "mutagenic"],
+        "target_organs": ["liver", "bladder"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "nitrobenzene",
+        "ground_truth_summary": "2-Nitrofluorene is a polycyclic nitroaromatic compound. Metabolized via nitro reduction to mutagenic aromatic amine intermediates. RAG should retrieve related nitroaromatic toxicology via semantic similarity."
+      }
+    },
+    {
+      "id": "GT-022",
+      "tier": "novel_rare",
+      "iupac_name": "pentachloronitrobenzene",
+      "common_name": "Quintozene",
+      "cas_number": "82-68-8",
+      "expected": {
+        "mechanism_keywords": ["organochlorine", "hepatotoxicity", "fungicide"],
+        "target_organs": ["liver", "kidney"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "nitrobenzene",
+        "ground_truth_summary": "Pentachloronitrobenzene is a chlorinated nitroaromatic fungicide. RAG should bridge structural similarity to chlorobenzene and nitrobenzene toxicology from T3DB."
+      }
+    },
+    {
+      "id": "GT-023",
+      "tier": "novel_rare",
+      "iupac_name": "trimethylarsine",
+      "common_name": "Trimethylarsine",
+      "cas_number": "593-88-4",
+      "expected": {
+        "mechanism_keywords": ["arsenic", "methylation", "volatile"],
+        "target_organs": ["lung", "liver"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "arsenic",
+        "ground_truth_summary": "Trimethylarsine is a volatile organoarsenic compound. RAG should retrieve arsenic-related toxicology via semantic similarity to arsenic compounds in T3DB."
+      }
+    },
+    {
+      "id": "GT-024",
+      "tier": "novel_rare",
+      "iupac_name": "diethylmercury",
+      "common_name": "Diethylmercury",
+      "cas_number": "627-44-1",
+      "expected": {
+        "mechanism_keywords": ["organomercury", "neurotoxicity", "lipophilic"],
+        "target_organs": ["CNS", "kidney"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "mercury",
+        "ground_truth_summary": "Diethylmercury is an extremely toxic organomercury compound. RAG should retrieve mercury-related neurotoxicology from T3DB via semantic similarity."
+      }
+    },
+    {
+      "id": "GT-025",
+      "tier": "novel_rare",
+      "iupac_name": "4-aminoazobenzene",
+      "common_name": "4-Aminoazobenzene",
+      "cas_number": "60-09-3",
+      "expected": {
+        "mechanism_keywords": ["azo dye", "carcinogenic", "N-hydroxylation"],
+        "target_organs": ["liver", "bladder"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "aniline",
+        "ground_truth_summary": "4-Aminoazobenzene is an aromatic azo dye metabolized to aniline-like amines via azo reduction. RAG should retrieve aromatic amine toxicology from T3DB."
+      }
+    },
+    {
+      "id": "GT-026",
+      "tier": "novel_rare",
+      "iupac_name": "1,2-dibromo-3-chloropropane",
+      "common_name": "DBCP",
+      "cas_number": "96-12-8",
+      "expected": {
+        "mechanism_keywords": ["alkylating", "reproductive toxicant", "spermatogenesis"],
+        "target_organs": ["testes", "liver", "kidney"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "carbon tetrachloride",
+        "ground_truth_summary": "DBCP is a halogenated alkylating agent that causes male infertility by disrupting spermatogenesis. RAG should retrieve related halogenated hydrocarbon toxicology."
+      }
+    },
+    {
+      "id": "GT-027",
+      "tier": "novel_rare",
+      "iupac_name": "tributyltin oxide",
+      "common_name": "TBTO",
+      "cas_number": "56-35-9",
+      "expected": {
+        "mechanism_keywords": ["organometallic", "immunotoxicity", "endocrine disruption"],
+        "target_organs": ["immune system", "liver", "endocrine"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "lead",
+        "ground_truth_summary": "Tributyltin oxide is an organotin compound causing immunotoxicity and endocrine disruption. RAG should retrieve organometallic toxicology via semantic similarity."
+      }
+    },
+    {
+      "id": "GT-028",
+      "tier": "novel_rare",
+      "iupac_name": "methoxychlor",
+      "common_name": "Methoxychlor",
+      "cas_number": "72-43-5",
+      "expected": {
+        "mechanism_keywords": ["estrogenic", "organochlorine", "endocrine disruption"],
+        "target_organs": ["reproductive system", "liver"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "atrazine",
+        "ground_truth_summary": "Methoxychlor is an organochlorine pesticide with estrogenic activity. RAG should retrieve endocrine-disrupting pesticide toxicology from T3DB."
+      }
+    },
+    {
+      "id": "GT-029",
+      "tier": "novel_rare",
+      "iupac_name": "hexachlorobutadiene",
+      "common_name": "Hexachlorobutadiene",
+      "cas_number": "87-68-3",
+      "expected": {
+        "mechanism_keywords": ["nephrotoxicity", "glutathione conjugation", "chlorinated"],
+        "target_organs": ["kidney", "liver"],
+        "ld50_values": [],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "carbon tetrachloride",
+        "ground_truth_summary": "Hexachlorobutadiene is a chlorinated hydrocarbon nephrotoxin metabolized via glutathione conjugation to reactive cysteine S-conjugates. RAG should retrieve chlorinated hydrocarbon toxicology."
+      }
+    },
+    {
+      "id": "GT-030",
+      "tier": "novel_rare",
+      "iupac_name": "dimethylnitrosamine",
+      "common_name": "NDMA",
+      "cas_number": "62-75-9",
+      "expected": {
+        "mechanism_keywords": ["alkylating", "CYP2E1", "hepatocarcinogen"],
+        "target_organs": ["liver"],
+        "ld50_values": ["37 mg/kg"],
+        "ghs_category": [],
+        "expected_retrieval_method": "semantic",
+        "expected_analogue_in_t3db": "formaldehyde",
+        "ground_truth_summary": "N-Nitrosodimethylamine is a potent hepatocarcinogen metabolized by CYP2E1 to methylating species that alkylate DNA. RAG should retrieve nitrosamine/alkylating agent toxicology."
+      }
+    },
+
+    {
+      "id": "GT-P4-001",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "nitrobenzene",
+      "candidate_iupac_name": "aniline",
+      "seed_cas": "98-95-3",
+      "candidate_cas": "62-53-3",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "nitrobenzene",
+        "candidate_mechanism_keywords": ["methemoglobin", "aromatic amine", "N-hydroxylation"],
+        "candidate_target_organs": ["blood", "spleen", "liver"],
+        "structural_relationship": "reduction of nitro to amine",
+        "ground_truth_summary": "Aniline is a known detoxification product of nitrobenzene (nitro to amine reduction). RAG should retrieve nitrobenzene and aromatic amine toxicology data for aniline via semantic similarity, since aniline shares methemoglobin-forming potential through N-hydroxylation."
+      }
+    },
+    {
+      "id": "GT-P4-002",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "benzene",
+      "candidate_iupac_name": "cyclohexane",
+      "seed_cas": "71-43-2",
+      "candidate_cas": "110-82-7",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "benzene",
+        "candidate_mechanism_keywords": ["CNS depression", "narcosis"],
+        "candidate_target_organs": ["CNS"],
+        "structural_relationship": "aromatic to saturated ring",
+        "ground_truth_summary": "Cyclohexane is significantly less toxic than benzene due to loss of aromatic character. RAG should retrieve benzene-related documents for cyclohexane via structural similarity, noting the absence of hematotoxicity and carcinogenicity."
+      }
+    },
+    {
+      "id": "GT-P4-003",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "methanal",
+      "candidate_iupac_name": "methanol",
+      "seed_cas": "50-00-0",
+      "candidate_cas": "67-56-1",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "exact_match",
+        "candidate_should_retrieve_analogue": "formaldehyde",
+        "candidate_mechanism_keywords": ["formic acid", "metabolic acidosis"],
+        "candidate_target_organs": ["eyes", "CNS"],
+        "structural_relationship": "aldehyde to alcohol",
+        "ground_truth_summary": "Methanol is less acutely toxic than formaldehyde. Ironically, methanol is metabolized TO formaldehyde. RAG should correctly retrieve both methanol's own toxicology and note the metabolic relationship with formaldehyde."
+      }
+    },
+    {
+      "id": "GT-P4-004",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "prop-2-enal",
+      "candidate_iupac_name": "prop-2-en-1-ol",
+      "seed_cas": "107-02-8",
+      "candidate_cas": "107-18-6",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "acrolein",
+        "candidate_mechanism_keywords": ["allylic alcohol", "hepatotoxicity"],
+        "candidate_target_organs": ["liver", "GI tract"],
+        "structural_relationship": "aldehyde to allylic alcohol",
+        "ground_truth_summary": "Allyl alcohol is a detoxification product of acrolein (alpha-beta-unsaturated aldehyde to alcohol). RAG should retrieve acrolein-related data noting the loss of the highly electrophilic aldehyde group."
+      }
+    },
+    {
+      "id": "GT-P4-005",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "chloroethene",
+      "candidate_iupac_name": "ethene",
+      "seed_cas": "75-01-4",
+      "candidate_cas": "74-85-1",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "vinyl chloride",
+        "candidate_mechanism_keywords": ["low toxicity", "narcosis"],
+        "candidate_target_organs": ["CNS"],
+        "structural_relationship": "halide removal",
+        "ground_truth_summary": "Ethylene is much less toxic than vinyl chloride due to removal of the chlorine substituent that enables reactive epoxide formation. RAG should retrieve vinyl chloride toxicology for comparison."
+      }
+    },
+    {
+      "id": "GT-P4-006",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "tetrachloromethane",
+      "candidate_iupac_name": "trichloromethane",
+      "seed_cas": "56-23-5",
+      "candidate_cas": "67-66-3",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "carbon tetrachloride",
+        "candidate_mechanism_keywords": ["hepatotoxicity", "trichloromethyl radical"],
+        "candidate_target_organs": ["liver", "kidney"],
+        "structural_relationship": "poly-halide to mono-halide reduction",
+        "ground_truth_summary": "Chloroform is less hepatotoxic than carbon tetrachloride due to reduced radical formation capacity. RAG should retrieve CCl4 toxicology for chloroform noting the degree-of-halogenation effect."
+      }
+    },
+    {
+      "id": "GT-P4-007",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "toluene-2,4-diisocyanate",
+      "candidate_iupac_name": "toluene-2,4-diamine",
+      "seed_cas": "584-84-9",
+      "candidate_cas": "95-80-7",
+      "expected": {
+        "seed_retrieval": "semantic_analogue",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "toluene diisocyanate",
+        "candidate_mechanism_keywords": ["aromatic amine", "carcinogen"],
+        "candidate_target_organs": ["liver", "bladder"],
+        "structural_relationship": "isocyanate to amine",
+        "ground_truth_summary": "Toluenediamine is less acutely toxic than TDI but is itself a carcinogen. RAG should retrieve TDI toxicology noting the loss of respiratory sensitization but emergence of carcinogenic aromatic amine properties."
+      }
+    },
+    {
+      "id": "GT-P4-008",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "carbonyl dichloride",
+      "candidate_iupac_name": "carbon dioxide",
+      "seed_cas": "75-44-5",
+      "candidate_cas": "124-38-9",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "phosgene",
+        "candidate_mechanism_keywords": ["asphyxiant", "low toxicity"],
+        "candidate_target_organs": ["respiratory"],
+        "structural_relationship": "carbonyl chloride to oxide",
+        "ground_truth_summary": "Carbon dioxide is essentially non-toxic at normal concentrations compared to phosgene. This extreme detoxification pair tests whether RAG can bridge a large structural shift to find the parent phosgene toxicology."
+      }
+    },
+    {
+      "id": "GT-P4-009",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "trichloromethane",
+      "candidate_iupac_name": "dichloromethane",
+      "seed_cas": "67-66-3",
+      "candidate_cas": "75-09-2",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "chloroform",
+        "candidate_mechanism_keywords": ["CNS depression", "hepatotoxicity", "CO formation"],
+        "candidate_target_organs": ["CNS", "liver"],
+        "structural_relationship": "progressive dehalogenation",
+        "ground_truth_summary": "Dichloromethane is less hepatotoxic than chloroform. Metabolized partly to CO via CYP2E1. RAG should retrieve chloroform toxicology noting stepwise structural change."
+      }
+    },
+    {
+      "id": "GT-P4-010",
+      "tier": "phase4_detox_pair",
+      "seed_iupac_name": "methyl isocyanate",
+      "candidate_iupac_name": "methylamine",
+      "seed_cas": "624-83-9",
+      "candidate_cas": "74-89-5",
+      "expected": {
+        "seed_retrieval": "exact_match",
+        "candidate_retrieval": "semantic_analogue",
+        "candidate_should_retrieve_analogue": "methyl isocyanate",
+        "candidate_mechanism_keywords": ["amine", "irritant", "low toxicity"],
+        "candidate_target_organs": ["respiratory", "skin"],
+        "structural_relationship": "isocyanate to amine",
+        "ground_truth_summary": "Methylamine is far less toxic than methyl isocyanate (Bhopal disaster agent). The isocyanate to amine conversion removes the highly reactive NCO group. RAG should retrieve MIC toxicology for comparison."
+      }
+    }
+  ]
+}

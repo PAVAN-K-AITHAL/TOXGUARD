@@ -1,0 +1,16 @@
+{
+  "r": 32,
+  "alpha": 64.0,
+  "dropout": 0.2,
+  "target_modules": [
+    "c_attn",
+    "c_proj",
+    "c_fc"
+  ],
+  "fan_in_fan_out": true,
+  "total_params": 8175873,
+  "trainable_params": 1147905,
+  "lora_params": 1048576,
+  "trainable_pct": 14.0402,
+  "checkpoint_dir": "iupacGPT\\iupac-gpt\\checkpoints\\iupac"
+}

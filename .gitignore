@@ -1,0 +1,95 @@
+# ========================
+# Environment & Secrets
+# ========================
+.env
+.env.*
+*.key
+
+# ========================
+# Code Review Graph
+# ========================
+.code-review-graph/
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# ========================
+# Virtual Environments
+# ========================
+venv/
+.venv/
+env/
+ENV/
+
+# ========================
+# Logs
+# ========================
+*.log
+detox.log
+toxguard_pipeline.log
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ========================
+# OS Files
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ========================
+# Model Checkpoints & Weights (large binaries)
+# ========================
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.h5
+
+# ========================
+# Tensorboard
+# ========================
+**/tensorboard/
+**/events.out.tfevents.*
+
+# ========================
+# Outputs & Caches
+# ========================
+outputs/
+*.cache
+
+# ========================
+# Gemini / Antigravity
+# ========================
+.gemini/
+
+# ========================
+# Misc
+# ========================
+nohup.out
+*.tmp
+*.bak
+
+chroma_db/
+*.sqlite3
