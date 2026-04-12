@@ -568,30 +568,6 @@
         ]
       ],
       "specificity": NaN
-    },
-    "clintox": {
-      "auc_roc": 0.4318625678119348,
-      "auc_prc": 0.037317876678962573,
-      "threshold": 0.43,
-      "accuracy": 0.3304498269896194,
-      "precision": 0.03826530612244898,
-      "recall": 0.6,
-      "f1": 0.07194244604316546,
-      "mcc": -0.035591506244068497,
-      "n_samples": 578,
-      "n_positive": 25,
-      "n_negative": 553,
-      "confusion_matrix": [
-        [
-          176,
-          377
-        ],
-        [
-          10,
-          15
-        ]
-      ],
-      "specificity": 0.3182640144665461
     }
   }
 }

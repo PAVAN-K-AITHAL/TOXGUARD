@@ -1,100 +1,72 @@
-# ========================
-# Environment & Secrets
-# ========================
-.env
-.env.*
-*.key
+# ── Virtual environment ───────────────────────────────────────
+toxgaurd_env/
+venv311/
+.venv/
+venv/
+env/
 
-# ========================
-# Code Review Graph
-# ========================
-.code-review-graph/
-
-# ========================
-# Python
-# ========================
+# ── Python cache ──────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-*.egg-info/
-*.egg
-dist/
-build/
-*.whl
+*.pyo
+*.pyd
+.Python
 
-# ========================
-# Virtual Environments
-# ========================
-venv/
-.venv/
-env/
-ENV/
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
 
-# ========================
-# Logs
-# ========================
-*.log
-detox.log
-toxguard_pipeline.log
+# ══════════════════════════════════════════════════════════════
+# iupacGPT — keep source code, ignore large corpus/weight files
+# ══════════════════════════════════════════════════════════════
 
-# ========================
-# IDE / Editor
-# ========================
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.project
-.settings/
+# 2.7 GB PubChem SMILES corpus (training data for iupacGPT, not needed for inference)
+iupacGPT/iupac-gpt/iupac_gpt/pubchem_iupac_smile_gpt.csv
 
-# ========================
-# OS Files
-# ========================
+# 149 MB IUPAC name corpus
+iupacGPT/iupac-gpt/iupac.txt
+
+# 12 MB classification training corpus
+iupacGPT/iupac-gpt/class.txt
+
+# 3.6 MB generated output file
+iupacGPT/iupac-gpt/iupacGPT2-gen50K.csv
+
+# Duplicate logP training data (7.5 MB each)
+iupacGPT/iupac-gpt/data/iupacs_logp.csv
+iupacGPT/iupac-gpt/iupac_gpt/iupacs_logp.csv
+
+# ── API resolution cache (generated, can be re-created) ───────
+data/iupac_cs_failed_cache.csv
+data/iupac_failed_cache.csv
+data/iupac_name_cache.csv
+
+# ── OS / editor noise ─────────────────────────────────────────
 .DS_Store
 Thumbs.db
 desktop.ini
-ehthumbs.db
+.vscode/
+.idea/
+.code-review-graph
+*.swp
+*.swo
 
-# ========================
-# Model Checkpoints & Weights (large binaries)
-# ========================
-*.ckpt
-*.pt
-*.pth
-*.bin
-*.safetensors
-*.h5
+# ── Environment / secrets ─────────────────────────────────────
+.env
+*.key
 
-# ========================
-# Tensorboard
-# ========================
-**/tensorboard/
-**/events.out.tfevents.*
-
-# ========================
-# Outputs & Caches
-# ========================
-outputs/
-*.cache
-
-# ========================
-# Gemini / Antigravity
-# ========================
-.gemini/
-
-# ========================
-# Misc
-# ========================
-nohup.out
-*.tmp
-*.bak
-
+# ── Vector DB / Chroma ────────────────────────────────────────
+Phase3-RAG/chroma_db/
 chroma_db/
-*.sqlite3
 
-# ========================
-# Internal Docs
-# ========================
-Implementation-Plans/
+# ── Phase 4 outputs & caches ─────────────────────────────────
+outputs/name_cache/
+outputs/rl_training/
+outputs/rl_training_v2/
+outputs/rl_training_v3/
+outputs/detox_*.json
+detox.log
+toxguard_pipeline.log
+
+# ── Editor configs ─────────────────────────────────────
+.code-review-graph/

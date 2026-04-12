@@ -10,10 +10,10 @@ Reads  :  data/toxcast_final.csv             <- ToxCast (binary from 617 assays)
           iupacGPT/iupac-gpt/checkpoints/iupac/  <- IUPACGPT backbone
           Phase1-IUPACGPT/iupacGPT_outputs/lora_config.json    <- LoRA config from step 4
 
-NOTE: T3DB and ClinTox are intentionally excluded from training.
+NOTE: T3DB is intentionally excluded from training.
       T3DB is 99.2% toxic and would severely bias the model toward over-predicting
-      toxicity. ClinTox is 3.4% toxic and would harm recall.
-      Both are used as external validation sets via step6_evaluate.py.
+      toxicity.
+      It is used as an external validation set via step6_evaluate.py.
 
 Outputs:  Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/lora_weights.pt    <- trained LoRA adapter weights
           Phase1-IUPACGPT/iupacGPT_outputs/<run_name>/checkpoints/       <- Lightning checkpoints
@@ -362,7 +362,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--focal_alpha", type=float, default=0.45,
                         help="Focal loss alpha weight for the toxic class. "
                              "0.45 is calibrated for the ~54%% toxic imbalance "
-                             "after removing T3DB and ClinTox from training. "
+                             "after removing T3DB from training. "
                              "(0.5 = no correction; lower values penalise FN more).")
 
 

@@ -63,18 +63,3 @@
                       Pred Non-toxic   Pred Toxic
       True Non-toxic           0            0
       True Toxic             627         2878
-
-  CLINTOX External Validation (n=578, 25 toxic / 553 non-toxic):
-    Threshold used : 0.43 (best val MCC)
-    AUC-ROC        : 0.4319
-    AUC-PRC        : 0.0373
-    Accuracy       : 0.3304
-    Precision      : 0.0383
-    Recall         : 0.6000
-    Specificity    : 0.3183  <-- headline metric (FDA-approved drug corpus)
-    F1             : 0.0719
-    MCC            : -0.0356
-    Confusion matrix:
-                      Pred Non-toxic   Pred Toxic
-      True Non-toxic         176          377
-      True Toxic              10           15

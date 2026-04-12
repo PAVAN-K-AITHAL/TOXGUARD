@@ -401,7 +401,7 @@ def main():
     run_molecule_examples(model, tokenizer, device, threshold=operative_threshold)
 
     # ------------------------------------------------------------------
-    # EXTERNAL VALIDATION (T3DB + ClinTox — never in training)
+    # EXTERNAL VALIDATION (T3DB — never in training)
     # ------------------------------------------------------------------
     ext_loaders = load_external_validation_datasets(
         data_dir=DATA_DIR,
@@ -439,7 +439,6 @@ def main():
         ext_metrics[ds_name] = m
 
         t3db_note    = "  <-- headline metric (near-all-toxic corpus)" if ds_name == "t3db"    else ""
-        clintox_note = "  <-- headline metric (FDA-approved drug corpus)" if ds_name == "clintox" else ""
 
         ext_report_lines.append(
             f"\n  {ds_name.upper()} External Validation "
@@ -452,7 +451,7 @@ def main():
         ext_report_lines.append(f"    Accuracy       : {m['accuracy']:.4f}")
         ext_report_lines.append(f"    Precision      : {m['precision']:.4f}")
         ext_report_lines.append(f"    Recall         : {m['recall']:.4f}{t3db_note}")
-        ext_report_lines.append(f"    Specificity    : {specificity:.4f}{clintox_note}")
+        ext_report_lines.append(f"    Specificity    : {specificity:.4f}")
         ext_report_lines.append(f"    F1             : {m['f1']:.4f}")
         ext_report_lines.append(f"    MCC            : {m['mcc']:.4f}")
         ext_report_lines.append(f"    Confusion matrix:")

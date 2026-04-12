@@ -3,7 +3,7 @@
 STEP 3 — SMILES → IUPAC Name Resolution  (V2 — Full Rebuild)
 =============================================================
 
-Resolves IUPAC names for every molecule in ToxCast, Tox21 and ClinTox.
+Resolves IUPAC names for every molecule in ToxCast, Tox21, hERG, and DILI.
 Uses RDKit for SMILES canonicalisation and stereochemistry detection,
 then resolves names through a three-API cascade:
     PubChem PUG REST → ChemSpider v2 → NCI CIR
@@ -47,14 +47,12 @@ Stereochemistry Resolution:
 Inputs:
     data/toxcast_final.csv     (smiles [, iupac_name], is_toxic)
     data/tox21_final.csv       (smiles [, iupac_name], is_toxic)
-    data/clintox_final.csv     (smiles [, iupac_name], is_toxic)
     data/herg_final.csv        (smiles [, iupac_name], is_toxic)
     data/dili_final.csv        (smiles [, iupac_name], is_toxic)
 
 Outputs (overwritten in-place):
     data/toxcast_final.csv     (smiles, iupac_name, is_toxic)
     data/tox21_final.csv       (smiles, iupac_name, is_toxic)
-    data/clintox_final.csv     (smiles, iupac_name, is_toxic)
     data/herg_final.csv        (smiles, iupac_name, is_toxic)
     data/dili_final.csv        (smiles, iupac_name, is_toxic)
     data/step3_cache.csv       (canonical_smiles, iupac_name, api_source)
@@ -114,7 +112,6 @@ FAILED_FILE = os.path.join(DATA_DIR, "failed_resolve.csv")
 DATASETS = {
     "toxcast": os.path.join(DATA_DIR, "toxcast_final.csv"),
     "tox21":   os.path.join(DATA_DIR, "tox21_final.csv"),
-    "clintox": os.path.join(DATA_DIR, "clintox_final.csv"),
     "herg":    os.path.join(DATA_DIR, "herg_final.csv"),
     "dili":    os.path.join(DATA_DIR, "dili_final.csv"),
 }
@@ -762,8 +759,8 @@ def main():
     parser.add_argument("--limit", type=int, default=None,
                         help="Only resolve first N uncached SMILES")
     parser.add_argument("--dataset", type=str, default=None,
-                        choices=["toxcast", "tox21", "clintox", "herg", "dili"],
-                        help="Process one dataset only (default: all five)")
+                        choices=["toxcast", "tox21", "herg", "dili"],
+                        help="Process one dataset only (default: all four)")
     parser.add_argument("--fresh", action="store_true",
                         help="Ignore existing cache, start from scratch")
     args = parser.parse_args()
