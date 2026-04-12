@@ -125,7 +125,7 @@ NCI_CIR_URL           = "https://cactus.nci.nih.gov/chemical/structure/{}/iupac_
 
 CHEMSPIDER_API_KEY = os.environ.get(
     "CHEMSPIDER_API_KEY",
-    "Vnn4UotnaAadd7vc78PCS12OkEKDJw4FFiCiacMg",
+    "YOUR_API_KEY",
 )
 
 # Rate limiting (PubChem: ≤5 req/s, ≤400 req/min)
