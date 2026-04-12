@@ -99,6 +99,7 @@ class HybridRetriever:
         mechanism: Optional[str] = None,
         pathways: Optional[str] = None,
         fetch_pubchem: bool = True,
+        exclude_molecule: Optional[str] = None,
     ) -> List[RetrievalResult]:
         """Retrieve relevant toxicological documents for a molecule.
 
@@ -109,6 +110,9 @@ class HybridRetriever:
             mechanism: Mechanism of action text (from Phase 2 CoT).
             pathways: Biological pathways text (from Phase 2 CoT).
             fetch_pubchem: Whether to try PubChem for unknown molecules.
+            exclude_molecule: Molecule name to EXCLUDE from results. Used in
+                Phase 4 to prevent cross-contamination — when querying for a
+                detoxified candidate, exclude docs from the parent toxic molecule.
 
         Returns:
             List of RetrievalResult objects, sorted by relevance score.
@@ -152,6 +156,20 @@ class HybridRetriever:
             if pubchem_results:
                 logger.info(
                     f"PubChem fetch: {len(pubchem_results)} additional documents"
+                )
+
+        # ── Phase C.5: Parent Exclusion Filter ────────────────────────
+        if exclude_molecule:
+            exclude_lower = exclude_molecule.lower().strip()
+            before = len(all_results)
+            all_results = {
+                doc_id: r for doc_id, r in all_results.items()
+                if r.molecule_name.lower().strip() != exclude_lower
+            }
+            excluded = before - len(all_results)
+            if excluded:
+                logger.info(
+                    f"Parent exclusion: removed {excluded} docs from '{exclude_molecule}'"
                 )
 
         # ── Phase D: Rerank and Select Top-K ──────────────────────────
@@ -223,6 +241,30 @@ class HybridRetriever:
                             metadata=r["metadata"],
                             score=1.0,
                             retrieval_method="exact_match",
+                            section=r["metadata"].get("section", ""),
+                            molecule_name=r["metadata"].get("molecule_name", ""),
+                            source=r["metadata"].get("source", ""),
+                        ))
+                if results:
+                    break
+
+        # Synonym-based lookup — bridges IUPAC↔common name gap.
+        # If querying 'methanal', finds 'Formaldehyde' via its synonym list.
+        if not results:
+            for variant in name_variants:
+                synonym_results = self.store.query_by_synonym(
+                    synonym=variant,
+                    limit=50,
+                )
+                for r in synonym_results:
+                    if r["id"] not in seen_ids:
+                        seen_ids.add(r["id"])
+                        results.append(RetrievalResult(
+                            doc_id=r["id"],
+                            content=r["content"],
+                            metadata=r["metadata"],
+                            score=0.95,  # High but slightly below direct exact match
+                            retrieval_method="synonym_match",
                             section=r["metadata"].get("section", ""),
                             molecule_name=r["metadata"].get("molecule_name", ""),
                             source=r["metadata"].get("source", ""),

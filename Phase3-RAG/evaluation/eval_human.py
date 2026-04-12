@@ -25,8 +25,9 @@ from typing import Dict, List, Optional
 
 # ── Path setup ─────────────────────────────────────────────────────────
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
-sys.path.insert(0, CURRENT_DIR)
+PHASE3_DIR = os.path.dirname(CURRENT_DIR)
+PROJECT_ROOT = os.path.dirname(PHASE3_DIR)
+sys.path.insert(0, PHASE3_DIR)
 sys.path.insert(0, PROJECT_ROOT)
 
 logger = logging.getLogger(__name__)
@@ -577,7 +578,7 @@ def main():
         )
     else:
         # Full generation + scoring
-        db_path = os.path.join(CURRENT_DIR, args.db_dir) if not os.path.isabs(args.db_dir) else args.db_dir
+        db_path = os.path.join(PHASE3_DIR, args.db_dir) if not os.path.isabs(args.db_dir) else args.db_dir
         results = run_golden_test(
             golden_set_path=args.golden,
             db_dir=db_path,

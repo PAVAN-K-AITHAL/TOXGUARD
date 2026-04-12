@@ -24,8 +24,9 @@ from typing import Dict, List, Optional, Set, Tuple
 
 # ── Path setup ─────────────────────────────────────────────────────────
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
-sys.path.insert(0, CURRENT_DIR)
+PHASE3_DIR = os.path.dirname(CURRENT_DIR)
+PROJECT_ROOT = os.path.dirname(PHASE3_DIR)
+sys.path.insert(0, PHASE3_DIR)
 sys.path.insert(0, PROJECT_ROOT)
 
 from vector_store import ToxVectorStore
@@ -415,7 +416,7 @@ def main():
     )
 
     # Initialize store and retriever
-    db_path = os.path.join(CURRENT_DIR, args.db_dir) if not os.path.isabs(args.db_dir) else args.db_dir
+    db_path = os.path.join(PHASE3_DIR, args.db_dir) if not os.path.isabs(args.db_dir) else args.db_dir
     store = ToxVectorStore(persist_dir=db_path)
     retriever = HybridRetriever(vector_store=store)
 

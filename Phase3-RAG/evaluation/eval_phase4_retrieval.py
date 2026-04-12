@@ -25,8 +25,9 @@ from typing import Dict, List, Optional, Tuple
 
 # ── Path setup ─────────────────────────────────────────────────────────
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
-sys.path.insert(0, CURRENT_DIR)
+PHASE3_DIR = os.path.dirname(CURRENT_DIR)
+PROJECT_ROOT = os.path.dirname(PHASE3_DIR)
+sys.path.insert(0, PHASE3_DIR)
 sys.path.insert(0, PROJECT_ROOT)
 
 from vector_store import ToxVectorStore
@@ -84,6 +85,7 @@ def test_candidate_retrieval(
     retriever: HybridRetriever,
     candidate_name: str,
     expected_analogue: str,
+    seed_name: str = "",
     K: int = 12,
 ) -> Dict:
     """Test if retriever finds the expected analogue's docs for a candidate.
@@ -92,6 +94,7 @@ def test_candidate_retrieval(
         retriever: HybridRetriever instance.
         candidate_name: IUPAC/common name of the candidate.
         expected_analogue: Name of the molecule whose docs should be retrieved.
+        seed_name: Parent toxic molecule to exclude from results.
         K: Number of top results to check.
 
     Returns:
@@ -104,6 +107,7 @@ def test_candidate_retrieval(
     results = retriever.retrieve(
         query_name=candidate_name,
         fetch_pubchem=False,  # Test only against existing KB
+        exclude_molecule=seed_name if seed_name else None,
     )
 
     top_k = results[:K]
@@ -165,6 +169,7 @@ def test_dossier_keyword_accuracy(
     results = retriever.retrieve(
         query_name=pair.candidate_iupac,
         fetch_pubchem=False,
+        exclude_molecule=pair.seed_iupac if pair.seed_iupac else None,
     )
 
     # Combine all retrieved doc texts
@@ -203,6 +208,7 @@ def check_cross_contamination(
     results = retriever.retrieve(
         query_name=pair.candidate_iupac,
         fetch_pubchem=False,
+        exclude_molecule=pair.seed_iupac if pair.seed_iupac else None,
     )
 
     top_k = results[:K]
@@ -376,7 +382,8 @@ def evaluate_phase4(
 
         # Test 1: Can retriever find the analogue?
         ret = test_candidate_retrieval(
-            retriever, pair.candidate_iupac, pair.expected_analogue, K
+            retriever, pair.candidate_iupac, pair.expected_analogue,
+            seed_name=pair.seed_iupac, K=K,
         )
         retrieval_results.append(ret)
 
@@ -445,7 +452,7 @@ def main():
         format="%(asctime)s | %(levelname)s | %(message)s",
     )
 
-    db_path = os.path.join(CURRENT_DIR, args.db_dir) if not os.path.isabs(args.db_dir) else args.db_dir
+    db_path = os.path.join(PHASE3_DIR, args.db_dir) if not os.path.isabs(args.db_dir) else args.db_dir
     store = ToxVectorStore(persist_dir=db_path)
     retriever = HybridRetriever(vector_store=store)
 

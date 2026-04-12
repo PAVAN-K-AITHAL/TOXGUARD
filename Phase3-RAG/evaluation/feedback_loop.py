@@ -17,8 +17,9 @@ from collections import Counter, defaultdict
 from typing import Dict, List, Optional
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
-sys.path.insert(0, CURRENT_DIR)
+PHASE3_DIR = os.path.dirname(CURRENT_DIR)
+PROJECT_ROOT = os.path.dirname(PHASE3_DIR)
+sys.path.insert(0, PHASE3_DIR)
 sys.path.insert(0, PROJECT_ROOT)
 
 logger = logging.getLogger(__name__)

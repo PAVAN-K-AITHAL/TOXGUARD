@@ -93,3 +93,8 @@ nohup.out
 
 chroma_db/
 *.sqlite3
+
+# ========================
+# Internal Docs
+# ========================
+Implementation-Plans/

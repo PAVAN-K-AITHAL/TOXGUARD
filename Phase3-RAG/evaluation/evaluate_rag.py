@@ -20,9 +20,10 @@ import re
 import sys
 from collections import Counter
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
+PHASE3_DIR = os.path.dirname(CURRENT_DIR)
+PROJECT_ROOT = os.path.dirname(PHASE3_DIR)
+sys.path.insert(0, PHASE3_DIR)
 sys.path.insert(0, PROJECT_ROOT)
 
 

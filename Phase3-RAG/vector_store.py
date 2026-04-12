@@ -234,6 +234,55 @@ class ToxVectorStore:
 
         return output
 
+    def query_by_synonym(
+        self,
+        synonym: str,
+        limit: int = 50,
+    ) -> List[Dict]:
+        """Search for documents whose 'synonyms' metadata contains the query.
+
+        Synonyms are stored as pipe-delimited strings in document metadata.
+        ChromaDB's $contains operator performs substring matching, so
+        querying for 'methanal' will match a synonyms field containing
+        'Formalin|Methanal|Formol|...'
+
+        Args:
+            synonym: Name to search for within synonym lists.
+            limit: Maximum results to return.
+
+        Returns:
+            List of result dicts with id, content, metadata (same format
+            as query_by_metadata).
+        """
+        self._ensure_initialized()
+
+        try:
+            results = self._collection.get(
+                where={"synonyms": {"$contains": synonym}},
+                limit=limit,
+                include=["documents", "metadatas"],
+            )
+        except Exception as e:
+            logger.warning(f"Synonym query failed for '{synonym}': {e}")
+            return []
+
+        output = []
+        if results and results["ids"]:
+            for i in range(len(results["ids"])):
+                output.append({
+                    "id": results["ids"][i],
+                    "content": results["documents"][i] if results.get("documents") else "",
+                    "metadata": results["metadatas"][i] if results.get("metadatas") else {},
+                    "distance": 0.0,
+                    "score": 1.0,
+                })
+
+        if output:
+            mol_name = output[0]["metadata"].get("molecule_name", "?")
+            logger.info(f"Synonym match '{synonym}' → {mol_name}: {len(output)} documents")
+
+        return output
+
     def get_stats(self) -> Dict:
         """Get collection statistics."""
         self._ensure_initialized()

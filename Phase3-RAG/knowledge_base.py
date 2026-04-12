@@ -148,6 +148,25 @@ def build_t3db_documents(
                 smiles_lookup[common.lower()] = smiles
         logger.info(f"Loaded {len(iupac_lookup)} IUPAC name mappings from processed T3DB")
 
+    # Build synonyms lookup from raw T3DB synonyms_list column.
+    # T3DB stores synonyms as \r\n or \r-separated strings.
+    synonyms_lookup = {}  # common_name.lower() -> list of synonym strings
+    if "synonyms_list" in df.columns:
+        for _, row in df.iterrows():
+            common = _clean_text(row.get("common_name", "")) or _clean_text(row.get("title", ""))
+            raw_syns = row.get("synonyms_list", "")
+            if not common or pd.isna(raw_syns) or not raw_syns:
+                continue
+            # Parse \r\n, \r, or \n separators
+            import re as _re_syn
+            syns = [s.strip() for s in _re_syn.split(r'[\r\n]+', str(raw_syns)) if s.strip()]
+            # Also include IUPAC name as a synonym if available
+            iupac_for_mol = iupac_lookup.get(common.lower(), "")
+            if iupac_for_mol and iupac_for_mol.lower() not in [s.lower() for s in syns]:
+                syns.append(iupac_for_mol)
+            synonyms_lookup[common.lower()] = syns
+        logger.info(f"Built synonyms lookup for {len(synonyms_lookup)} molecules")
+
     # Load target mechanisms for protein target info
     target_info = {}
     if target_mechanisms_path and os.path.exists(target_mechanisms_path):
@@ -210,11 +229,17 @@ def build_t3db_documents(
             or smiles_lookup.get(common_name.lower(), "")
         )
 
+        # Resolve synonyms for this molecule
+        mol_synonyms = synonyms_lookup.get(common_name.lower(), [])
+        # Store as pipe-delimited string (ChromaDB metadata must be scalar)
+        synonyms_str = "|".join(mol_synonyms) if mol_synonyms else ""
+
         # Base metadata shared by all sections of this molecule
         base_meta = {
             "t3db_id": t3db_id,
             "pubchem_id": pubchem_id,
             "smiles": smiles,
+            "synonyms": synonyms_str,
         }
 
         # Create one document per non-empty section
@@ -223,12 +248,19 @@ def build_t3db_documents(
             if len(content) < MIN_CONTENT_LENGTH:
                 continue
 
+            # Build synonym hint for embedding context
+            synonym_hint = ""
+            if mol_synonyms:
+                top_syns = mol_synonyms[:5]  # Include top 5 synonyms
+                synonym_hint = f"\nAlso known as: {', '.join(top_syns)}"
+
             # Prefix content with molecule name and section for richer
             # embedding context
             enriched_content = (
                 f"Molecule: {common_name}"
                 + (f" (IUPAC: {iupac})" if iupac else "")
                 + (f" [CAS: {cas}]" if cas else "")
+                + synonym_hint
                 + f"\nSection: {section_name}\n\n{content}"
             )
 
