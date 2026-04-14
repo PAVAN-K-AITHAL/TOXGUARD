@@ -10,6 +10,7 @@ while maintaining relevance through reranking.
 """
 
 import logging
+import os
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
@@ -143,11 +144,26 @@ class HybridRetriever:
             f"total unique: {len(all_results)}"
         )
 
-        # ── Phase C: PubChem Fetch (if few results or missing toxicity data) ───
+        # ── Phase C: PubChem Fetch (if few results or missing safety data) ───
         has_tox_data = any(
             r.section in ("lethaldose", "pharmacology") for r in exact_results
         )
-        if fetch_pubchem and self.pubchem_fetcher and (len(exact_results) < 3 or not has_tox_data):
+        # Check if PubChem-specific safety sections are already present
+        # (from a previous fetch cached in ChromaDB or from current exact match).
+        # Without this, re-indexing ChromaDB wipes cached PubChem docs and the
+        # has_tox_data check alone prevents re-fetching — losing GHS, hazard
+        # statements, and safety measures that T3DB doesn't provide.
+        has_pubchem_sections = any(
+            r.source == "pubchem" or r.section in (
+                "ghs_classification", "hazard_statements", "safety_measures"
+            )
+            for r in all_results.values()
+        )
+        if fetch_pubchem and self.pubchem_fetcher and (
+            len(exact_results) < 3
+            or not has_tox_data
+            or not has_pubchem_sections
+        ):
             pubchem_results = self._fetch_pubchem_docs(query_name)
             for r in pubchem_results:
                 if r.doc_id not in all_results:
@@ -362,11 +378,24 @@ class HybridRetriever:
             if not records:
                 return []
 
-            # Convert PubChem records to documents
+            # Convert PubChem records to documents.
+            # Use importlib fallback to handle main.py's importlib-based
+            # loading which leaves Phase3-RAG off sys.path.
             try:
                 from .knowledge_base import build_pubchem_documents
             except ImportError:
-                from knowledge_base import build_pubchem_documents
+                try:
+                    from knowledge_base import build_pubchem_documents
+                except ImportError:
+                    import importlib.util as _ilu
+                    _kb_path = os.path.join(
+                        os.path.dirname(os.path.abspath(__file__)),
+                        "knowledge_base.py",
+                    )
+                    _spec = _ilu.spec_from_file_location("rag_knowledge_base", _kb_path)
+                    _kb_mod = _ilu.module_from_spec(_spec)
+                    _spec.loader.exec_module(_kb_mod)
+                    build_pubchem_documents = _kb_mod.build_pubchem_documents
             docs = build_pubchem_documents(records)
 
             # Add to vector store for future queries
@@ -501,8 +530,16 @@ class HybridRetriever:
         has_tox_data = any(
             r.section in ("lethaldose", "pharmacology") for r in exact_results
         )
+        has_pubchem_sections = any(
+            r.source == "pubchem" or r.section in (
+                "ghs_classification", "hazard_statements", "safety_measures"
+            )
+            for r in all_results.values()
+        )
         if fetch_pubchem and self.pubchem_fetcher and (
-            len(exact_results) < 3 or not has_tox_data
+            len(exact_results) < 3
+            or not has_tox_data
+            or not has_pubchem_sections
         ):
             pubchem_results = self._fetch_pubchem_docs(query_name)
             for r in pubchem_results:

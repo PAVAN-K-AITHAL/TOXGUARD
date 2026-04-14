@@ -60,13 +60,15 @@ Phase3-RAG/chroma_db/
 chroma_db/
 
 # ── Phase 4 outputs & caches ─────────────────────────────────
-outputs/name_cache/
-outputs/rl_training/
-outputs/rl_training_v2/
-outputs/rl_training_v3/
-outputs/detox_*.json
+outputs/
 detox.log
 toxguard_pipeline.log
 
 # ── Editor configs ─────────────────────────────────────
 .code-review-graph/
+
+# ── Implementation Plans ──────────────────────────────
+Implementation-Plans/
+
+# ── Phase 1 Outputs ───────────────────────────────────
+Phase1-IUPACGPT/iupacGPT_outputs/
